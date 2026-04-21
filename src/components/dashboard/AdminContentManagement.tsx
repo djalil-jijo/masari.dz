@@ -1,0 +1,147 @@
+"use client";
+
+import React, { useState } from 'react';
+import { 
+  FileText, 
+  Plus, 
+  Search, 
+  Filter, 
+  Edit2, 
+  Trash2, 
+  Eye, 
+  Globe, 
+  Lock,
+  MoreVertical,
+  Image as ImageIcon,
+  Link as LinkIcon
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+
+const contentItems = [
+  { id: 1, title: "كيف تختار تخصصك الجامعي؟", category: "مقالات", date: "2024-04-10", status: "Published", author: "د. أحمد", views: 1240 },
+  { id: 2, title: "أهمية مقياس هولاند في التوجيه", category: "أدلة مهنية", date: "2024-04-08", status: "Published", author: "أ. سارة", views: 856 },
+  { id: 3, title: "إعلان: فتح باب التسجيل للمقياس الجماعي", category: "إعلانات", date: "2024-04-12", status: "Draft", author: "المدير", views: 0 },
+  { id: 4, title: "فهم السمات الشخصية الخمس الكبرى", category: "مقالات", date: "2024-04-05", status: "Published", author: "د. فهد", views: 2100 },
+];
+
+export default function AdminContentManagement() {
+  const [filter, setFilter] = useState('All');
+
+  return (
+    <div className="space-y-8 animate-fade-in">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <h2 className="text-3xl font-bold text-primary-950 dark:text-white">إدارة المحتوى والإعلانات</h2>
+          <p className="text-slate-700 dark:text-slate-300 font-medium">إدارة المقالات، الأدلة الإرشادية، والتنبيهات العامة للمنصة</p>
+        </div>
+        <button className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-2xl font-bold shadow-lg shadow-primary-600/30 hover:bg-primary-700 transition-all hover:scale-105 active:scale-95">
+          <Plus size={20} />
+          إضافة محتوى جديد
+        </button>
+      </div>
+
+      {/* Tabs & Filters */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-indigo-100/20 pb-4">
+        <div className="flex items-center gap-1 bg-white/40 dark:bg-slate-800/40 p-1 rounded-xl glass-morphism">
+          {['الكل', 'مقالات', 'أدلة مهنية', 'إعلانات'].map((tab) => (
+            <button 
+              key={tab}
+              onClick={() => setFilter(tab)}
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${filter === tab || (tab === 'الكل' && filter === 'All') ? 'bg-primary-600 text-white shadow-md' : 'text-slate-600 dark:text-slate-400 hover:bg-white/50'}`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+            <input 
+              type="text" 
+              placeholder="البحث في العناوين..."
+              className="pr-10 pl-4 py-2.5 rounded-xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 transition-all text-sm w-64 text-primary-950 font-medium"
+            />
+          </div>
+          <button className="p-2.5 glass-morphism border border-indigo-100/20 rounded-xl text-slate-600 hover:text-primary-600 transition-all">
+            <Filter size={18} />
+          </button>
+        </div>
+      </div>
+
+      {/* Content Grid */}
+      <div className="grid grid-cols-1 gap-4">
+        {contentItems.map((item, idx) => (
+          <motion.div 
+            key={item.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1 }}
+            className="glass-morphism p-5 rounded-3xl border border-white/40 hover:border-primary-200 transition-all group flex flex-col md:flex-row md:items-center justify-between gap-4"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-2xl flex items-center justify-center shrink-0">
+                {item.category === 'إعلانات' ? <Globe size={24} /> : <FileText size={24} />}
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-primary-950 dark:text-white group-hover:text-primary-600 transition-colors">{item.title}</h3>
+                <div className="flex items-center gap-4 mt-1 text-xs font-bold text-slate-500">
+                  <span className="flex items-center gap-1"><Edit2 size={12} /> {item.author}</span>
+                  <span className="flex items-center gap-1"><Eye size={12} /> {item.views} مشاهدة</span>
+                  <span className="bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded text-primary-600">{item.category}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0">
+              <div className="flex flex-col items-end">
+                <div className="text-[10px] text-slate-400 font-bold mb-1 uppercase tracking-wider">تاريخ النشر</div>
+                <div className="text-sm font-bold text-slate-700 dark:text-slate-300">{item.date}</div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className={`px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1.5 ${item.status === 'Published' ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'}`}>
+                  {item.status === 'Published' ? <Globe size={12} /> : <Lock size={12} />}
+                  {item.status === 'Published' ? 'منشور' : 'مسودة'}
+                </span>
+                
+                <div className="h-8 w-[1px] bg-indigo-100/20 mx-2 hidden md:block"></div>
+
+                <div className="flex items-center gap-1">
+                  <button className="p-2 text-slate-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all" title="تعديل">
+                    <Edit2 size={18} />
+                  </button>
+                  <button className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="حذف">
+                    <Trash2 size={18} />
+                  </button>
+                  <button className="p-2 text-slate-400 hover:text-slate-600 rounded-lg transition-all">
+                    <MoreVertical size={18} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Analytics Summary */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="glass-morphism p-6 rounded-3xl border border-green-100/20 bg-green-50/10">
+           <div className="text-slate-500 text-xs font-bold mb-2">إجمالي المقالات</div>
+           <div className="text-2xl font-bold text-primary-950 dark:text-white">124 مقالاً</div>
+           <div className="text-[10px] text-green-500 font-bold mt-2">+12 مقالاً هذا الشهر</div>
+        </div>
+        <div className="glass-morphism p-6 rounded-3xl border border-blue-100/20 bg-blue-50/10">
+           <div className="text-slate-500 text-xs font-bold mb-2">المشاهدات الكلية</div>
+           <div className="text-2xl font-bold text-primary-950 dark:text-white">45.2K</div>
+           <div className="text-[10px] text-blue-500 font-bold mt-2">زيادة 8% عن الأسبوع الماضي</div>
+        </div>
+        <div className="glass-morphism p-6 rounded-3xl border border-indigo-100/20 bg-indigo-50/10">
+           <div className="text-slate-500 text-xs font-bold mb-2">إعلانات نشطة</div>
+           <div className="text-2xl font-bold text-primary-950 dark:text-white">3 إعلانات</div>
+           <div className="text-[10px] text-indigo-500 font-bold mt-2">تغطي كامل المنصة</div>
+        </div>
+      </div>
+    </div>
+  );
+}

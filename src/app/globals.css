@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary: Deep energetic Obstan Indigo */
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #252973; /* Refined Deep Indigo */
+  --color-primary-700: #1e215c;
+  --color-primary-800: #171a45;
+  --color-primary-900: #111330;
+  --color-primary-950: #0a0b1c;
+
+  /* Secondary: Obstan Teal/Cyan */
+  --color-secondary-50: #ecfeff;
+  --color-secondary-100: #cffafe;
+  --color-secondary-200: #a5f3fc;
+  --color-secondary-300: #67e8f9;
+  --color-secondary-400: #22d3ee;
+  --color-secondary-500: #06b6d4;
+  --color-secondary-600: #0891b2;
+  --color-secondary-700: #0e7490;
+  --color-secondary-800: #155e75;
+  --color-secondary-900: #164e63;
+  --color-secondary-950: #083344;
+
+  /* Accent colors */
+  --color-accent-pink: #fce4ec;
+  --color-accent-teal: #00bcd4;
+  --color-accent-orange: #ffd54f;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #111330;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0b1c;
+    --foreground: #f8fafc;
+  }
+}
+
+html, body {
+  /* Forced High-quality multi-stop gradient inspired by Obstan website */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(224, 247, 250, 0.8) 0, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(252, 228, 236, 0.8) 0, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(224, 247, 250, 0.8) 0, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(252, 228, 236, 0.8) 0, transparent 50%),
+    linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-color: #ffffff !important;
+  color: var(--foreground);
+  font-family: var(--font-arabic);
+  min-height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--background);
+    background-image: none;
+  }
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.dark .glass-morphism {
+  background: rgba(10, 11, 28, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
