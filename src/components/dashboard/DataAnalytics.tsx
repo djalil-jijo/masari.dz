@@ -121,7 +121,7 @@ export default function DataAnalytics() {
             className="glass-morphism p-6 rounded-[2rem] border border-white/40 shadow-sm group hover:shadow-xl transition-all"
           >
             <div className={`w-12 h-12 ${stat.bg} ${stat.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-              {React.cloneElement(stat.icon as React.ReactElement, { size: 24 })}
+              {React.cloneElement(stat.icon as React.ReactElement<any>, { size: 24 })}
             </div>
             <p className="text-xs font-black text-slate-500 uppercase tracking-wider mb-1">{stat.label}</p>
             <h4 className="text-xl font-black text-primary-950 truncate">{stat.value}</h4>
