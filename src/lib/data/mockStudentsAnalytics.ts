@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker/locale/ar';
 import { calculateCompatibility, majors } from '../data';
+import { generateAlgerianName } from './mockUsers';
 
 // Function to generate a random student with assessment results
 export const generateMockStudentsAnalytics = (count: number = 100) => {
@@ -38,7 +39,7 @@ export const generateMockStudentsAnalytics = (count: number = 100) => {
 
     students.push({
       id: faker.string.uuid(),
-      name: faker.person.fullName(),
+      name: generateAlgerianName(),
       holland: studentHolland,
       abilities: studentAbilities,
       personality,

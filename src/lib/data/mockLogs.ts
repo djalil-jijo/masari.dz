@@ -1,4 +1,5 @@
 import { fakerAR as faker } from '@faker-js/faker';
+import { generateAlgerianName } from './mockUsers';
 
 export type LogType = 'USER' | 'ASSESSMENT' | 'SESSION' | 'SYSTEM';
 
@@ -39,7 +40,7 @@ const generateMockLogs = (count: number = 200): AuditLog[] => {
       id: faker.string.uuid(),
       action: faker.helpers.arrayElement(actions[type]),
       type: type,
-      user: faker.person.fullName(),
+      user: generateAlgerianName(),
       role: role,
       timestamp: faker.date.recent({ days: 30 }).toLocaleString('ar-SA'),
     });
