@@ -77,13 +77,13 @@ export default function AssessmentCenter() {
                   </div>
                 </div>
                 
-                <Link 
-                  href={test.href}
-                  className="block w-full text-center py-4 bg-slate-900  text-white  font-bold rounded-2xl hover:opacity-90 transition-all flex items-center justify-center gap-2"
+                <button 
+                  disabled
+                  className="block w-full text-center py-4 bg-slate-200 text-slate-400 dark:bg-slate-800 dark:text-slate-600 font-bold rounded-2xl cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   ابدأ المقياس الآن
                   <ChevronLeft size={18} />
-                </Link>
+                </button>
               </div>
             </div>
           ))}
