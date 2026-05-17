@@ -15,10 +15,10 @@ export default function CounselorMonitoring() {
   ];
 
   const recentActivities = [
-    { id: 1, action: "أكمل مقياس الميول المهنية", student: "أحمد بن محمد", time: "قبل ساعتين", type: "assessment" },
-    { id: 2, action: "طلب استشارة جديدة", student: "سارة العلي", time: "قبل 4 ساعات", type: "request" },
-    { id: 3, action: "تم رفع تقرير المتابعة", student: "فهد الدوسري", time: "أمس", type: "file" },
-    { id: 4, action: "أكمل اختبار القدرات", student: "نورة القحطاني", time: "أمس", type: "assessment" },
+    { id: 1, action: "أكمل مقياس الميول المهنية", student: "أحمد بوعلام", time: "قبل ساعتين", type: "assessment" },
+    { id: 2, action: "طلب استشارة جديدة", student: "سارة بن علي", time: "قبل 4 ساعات", type: "request" },
+    { id: 3, action: "تم رفع تقرير المتابعة", student: "يانيس بوزيد", time: "أمس", type: "file" },
+    { id: 4, action: "أكمل اختبار القدرات", student: "نريمان قاسمي", time: "أمس", type: "assessment" },
   ];
 
   const pendingTasks = [

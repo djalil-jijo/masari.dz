@@ -7,10 +7,10 @@ export default function CounselorSessions() {
   const [isNewSessionModalOpen, setIsNewSessionModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('الكل');
   const sessions = [
-    { id: 1, student: "أحمد بن محمد", type: "جلسة توجيه", time: "09:00 - 10:00", status: "قادم", date: "اليوم" },
-    { id: 2, student: "سارة العلي", type: "استشارة نفسية", time: "11:30 - 12:30", status: "قادم", date: "اليوم" },
-    { id: 3, student: "خالد العمودي", type: "تحليل نتائج", time: "14:00 - 15:00", status: "تم", date: "أمس" },
-    { id: 4, student: "نورة القحطاني", type: "جلسة توجيه", time: "10:00 - 11:00", status: "تم", date: "أمس" },
+    { id: 1, student: "أحمد بوعلام", type: "جلسة توجيه", time: "09:00 - 10:00", status: "قادم", date: "اليوم" },
+    { id: 2, student: "سارة بن علي", type: "استشارة نفسية", time: "11:30 - 12:30", status: "قادم", date: "اليوم" },
+    { id: 3, student: "الياس منصوري", type: "تحليل نتائج", time: "14:00 - 15:00", status: "تم", date: "أمس" },
+    { id: 4, student: "نريمان قاسمي", type: "جلسة توجيه", time: "10:00 - 11:00", status: "تم", date: "أمس" },
   ];
 
   return (

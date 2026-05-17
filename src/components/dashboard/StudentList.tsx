@@ -5,11 +5,11 @@ import { Search, Filter, MoreHorizontal, User, CheckCircle2, Clock, ArrowLeft } 
 import { motion } from 'framer-motion';
 
 const students = [
-  { id: 1, name: "أحمد بن محمد", email: "ahmed@student.com", grade: "3ث - علمي", status: "مكتمل", topInterest: "بحثي (I)", lastActive: "منذ ساعتين" },
-  { id: 2, name: "سارة العلي", email: "sara@student.com", grade: "2ث - أدبي", status: "مكتمل", topInterest: "اجتماعي (S)", lastActive: "منذ 3 ساعات" },
-  { id: 3, name: "خالد العمودي", email: "khalid@student.com", grade: "3ث - علمي", status: "قيد التنفيذ", topInterest: "--", lastActive: "منذ 5 ساعات" },
-  { id: 4, name: "نورة القحطاني", email: "noura@student.com", grade: "1ث", status: "مكتمل", topInterest: "فني (A)", lastActive: "أمس" },
-  { id: 5, name: "فهد الدوسري", email: "fahad@student.com", grade: "2ث - علمي", status: "لم يبدأ", topInterest: "--", lastActive: "منذ يومين" },
+  { id: 1, name: "أحمد بوعلام", email: "ahmed@student.com", grade: "3ث - علمي", status: "مكتمل", topInterest: "بحثي (I)", lastActive: "منذ ساعتين" },
+  { id: 2, name: "سارة بن علي", email: "sara@student.com", grade: "2ث - أدبي", status: "مكتمل", topInterest: "اجتماعي (S)", lastActive: "منذ 3 ساعات" },
+  { id: 3, name: "الياس منصوري", email: "khalid@student.com", grade: "3ث - علمي", status: "قيد التنفيذ", topInterest: "--", lastActive: "منذ 5 ساعات" },
+  { id: 4, name: "نريمان قاسمي", email: "noura@student.com", grade: "1ث", status: "مكتمل", topInterest: "فني (A)", lastActive: "أمس" },
+  { id: 5, name: "يانيس بوزيد", email: "fahad@student.com", grade: "2ث - علمي", status: "لم يبدأ", topInterest: "--", lastActive: "منذ يومين" },
 ];
 
 export default function StudentList() {

@@ -1,10 +1,38 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { User, Mail, Shield, Camera, Edit2, X } from 'lucide-react';
 
 export default function CounselorProfile() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [profile, setProfile] = useState({
+    name: "المستشار التربوي",
+    email: "admin@masari.com",
+    phone: "+213 5XX XX XX XX"
+  });
+
+  const [formProfile, setFormProfile] = useState(profile);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('counselor_profile');
+    if (saved) {
+      try {
+        setProfile(JSON.parse(saved));
+      } catch(e) {}
+    }
+  }, []);
+
+  const openEditModal = () => {
+    setFormProfile(profile);
+    setIsEditModalOpen(true);
+  };
+
+  const handleSave = () => {
+    setProfile(formProfile);
+    localStorage.setItem('counselor_profile', JSON.stringify(formProfile));
+    setIsEditModalOpen(false);
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6 font-arabic animate-fade-in">
       <div className="mb-8">
@@ -18,13 +46,13 @@ export default function CounselorProfile() {
           <div className="glass-morphism p-8 rounded-3xl border border-white/40 shadow-sm text-center">
             <div className="relative w-32 h-32 mx-auto mb-6">
               <div className="w-full h-full bg-indigo-100  rounded-full flex items-center justify-center text-indigo-600 text-4xl font-bold">
-                م
+                {profile.name.charAt(0)}
               </div>
-              <button onClick={() => alert('إضافة صورة شخصية قيد التطوير')} className="absolute bottom-0 right-0 p-2 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition-colors">
+              <button onClick={() => {}} className="absolute bottom-0 right-0 p-2 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition-colors">
                 <Camera size={18} />
               </button>
             </div>
-            <h2 className="text-xl font-bold text-primary-950  mb-1">المستشار التربوي</h2>
+            <h2 className="text-xl font-bold text-primary-950  mb-1">{profile.name}</h2>
             <p className="text-sm text-slate-700  font-bold mb-6">مستشار مهني ونفسي</p>
             <div className="flex justify-center gap-2">
               <span className="px-3 py-1 bg-green-50  text-green-600 text-[10px] font-bold rounded-full">نشط الآن</span>
@@ -37,8 +65,8 @@ export default function CounselorProfile() {
               الأمان والخصوصية
             </h3>
             <div className="space-y-4">
-              <button onClick={() => alert('صفحة تغيير كلمة المرور قيد التطوير')} className="w-full text-right text-sm text-slate-700 hover:text-primary-600 font-bold transition-colors">تغيير كلمة المرور</button>
-              <button onClick={() => alert('إعدادات المصادقة الثنائية قيد التطوير')} className="w-full text-right text-sm text-slate-700 hover:text-primary-600 font-bold transition-colors">تفعيل المصادقة الثنائية</button>
+              <button onClick={() => {}} className="w-full text-right text-sm text-slate-700 hover:text-primary-600 font-bold transition-colors">تغيير كلمة المرور</button>
+              <button onClick={() => {}} className="w-full text-right text-sm text-slate-700 hover:text-primary-600 font-bold transition-colors">تفعيل المصادقة الثنائية</button>
             </div>
           </div>
         </div>
@@ -48,7 +76,7 @@ export default function CounselorProfile() {
           <div className="glass-morphism p-8 rounded-3xl border border-white/40 shadow-sm">
             <div className="flex items-center justify-between mb-8">
               <h3 className="font-bold text-primary-950 ">المعلومات الشخصية</h3>
-              <button onClick={() => setIsEditModalOpen(true)} className="flex items-center gap-2 text-sm text-primary-600 font-bold hover:underline">
+              <button onClick={openEditModal} className="flex items-center gap-2 text-sm text-primary-600 font-bold hover:underline">
                 <Edit2 size={16} />
                 تعديل
               </button>
@@ -57,15 +85,15 @@ export default function CounselorProfile() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-700  uppercase">الاسم الكامل</label>
-                <div className="p-3 glass-morphism border border-indigo-100/10 rounded-xl text-primary-950  font-bold">المستشار التربوي</div>
+                <div className="p-3 glass-morphism border border-indigo-100/10 rounded-xl text-primary-950  font-bold">{profile.name}</div>
               </div>
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-700  uppercase">البريد الإلكتروني</label>
-                <div className="p-3 glass-morphism border border-indigo-100/10 rounded-xl text-primary-950  font-bold text-left">admin@masari.com</div>
+                <div className="p-3 glass-morphism border border-indigo-100/10 rounded-xl text-primary-950  font-bold text-left">{profile.email}</div>
               </div>
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-700  uppercase">رقم الهاتف</label>
-                <div className="p-3 glass-morphism border border-indigo-100/10 rounded-xl text-primary-950  font-bold text-left">+213 5XX XX XX XX</div>
+                <div className="p-3 glass-morphism border border-indigo-100/10 rounded-xl text-primary-950  font-bold text-left">{profile.phone}</div>
               </div>
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-700  uppercase">التخصص</label>
@@ -95,22 +123,34 @@ export default function CounselorProfile() {
              <div className="space-y-4 font-arabic">
                 <div>
                    <label className="block text-sm font-bold text-slate-700 mb-2">الاسم الكامل</label>
-                   <input type="text" defaultValue="المستشار التربوي" className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm" />
+                   <input 
+                     type="text" 
+                     value={formProfile.name} 
+                     onChange={e => setFormProfile({...formProfile, name: e.target.value})}
+                     className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm" 
+                   />
                 </div>
                 <div>
                    <label className="block text-sm font-bold text-slate-700 mb-2">البريد الإلكتروني</label>
-                   <input type="email" defaultValue="admin@masari.com" className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm text-left" dir="ltr" />
+                   <input 
+                     type="email" 
+                     value={formProfile.email} 
+                     onChange={e => setFormProfile({...formProfile, email: e.target.value})}
+                     className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm text-left" dir="ltr" 
+                   />
                 </div>
                 <div>
                    <label className="block text-sm font-bold text-slate-700 mb-2">رقم الهاتف</label>
-                   <input type="tel" defaultValue="+213 5XX XX XX XX" className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm text-left" dir="ltr" />
+                   <input 
+                     type="tel" 
+                     value={formProfile.phone} 
+                     onChange={e => setFormProfile({...formProfile, phone: e.target.value})}
+                     className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm text-left" dir="ltr" 
+                   />
                 </div>
                 <div className="pt-4 flex items-center gap-3">
                    <button 
-                     onClick={() => {
-                        setIsEditModalOpen(false);
-                        alert('تم حفظ التعديلات بنجاح');
-                     }}
+                     onClick={handleSave}
                      className="flex-1 py-3 bg-primary-600 text-white rounded-xl font-bold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/20"
                    >
                      حفظ التعديلات

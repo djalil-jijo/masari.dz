@@ -80,39 +80,43 @@ export default function RecommendationsView({ userHolland, userAbilities, userPe
               </div>
             )}
             
-            <div className="flex items-center justify-between mb-6">
-              <div className="w-12 h-12 bg-slate-50  rounded-xl flex items-center justify-center text-primary-600">
-                <GraduationCap size={24} />
-              </div>
-              <div className="text-right">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider italic">نسبة التوافق</span>
-                <div className="text-2xl font-bold text-primary-600">{major.compatibility}%</div>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-bold text-primary-950  mb-3 group-hover:text-primary-600 transition-colors">
-              {major.name}
-            </h3>
-            <p className="text-sm text-slate-700  font-bold leading-relaxed mb-6">
-              {major.description}
-            </p>
-
-            <div className="space-y-4 pt-6 border-t border-slate-50 ">
-              <div>
-                <h4 className="text-xs font-bold text-slate-500 mb-3 flex items-center gap-2">
-                  <Briefcase size={14} />
-                  المسارات المهنية المرتبطة:
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {major.careers.map((career, i) => (
-                    <span key={i} className="px-3 py-1 glass-morphism border border-indigo-100/20 text-slate-700  text-[10px] font-bold rounded-lg transition-colors">
-                      {career}
-                    </span>
-                  ))}
+            <div className="flex flex-col h-full">
+              <div className="flex items-start justify-between mb-4">
+                <div className="text-right">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">نسبة التوافق</span>
+                  <div className="text-2xl font-bold text-primary-600">{major.compatibility}%</div>
+                </div>
+                <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-primary-600 shadow-sm border border-slate-100">
+                  <GraduationCap size={24} />
                 </div>
               </div>
 
-              <button className="w-full mt-4 flex items-center justify-center gap-2 text-sm font-bold text-primary-950  py-3 glass-morphism border border-indigo-100/10 rounded-xl hover:bg-white/60  transition-all">
+              <div className="mb-4">
+                <div className="inline-block relative mb-3">
+                  <h3 className="text-2xl font-bold text-primary-950 group-hover:text-primary-600 transition-colors">
+                    {major.name} :
+                  </h3>
+                  <div className="h-1 w-full bg-primary-200 mt-1 rounded-full"></div>
+                </div>
+                <p className="text-base text-slate-700 font-bold leading-relaxed">
+                  {major.description}
+                </p>
+              </div>
+
+              <div className="flex-1 mt-4">
+                <div className="inline-block mb-3">
+                  <h4 className="text-sm font-bold text-slate-800 flex items-center gap-2">
+                    <Briefcase size={16} className="text-primary-600" />
+                    المسارات المهنية المرتبطة :
+                  </h4>
+                  <div className="h-0.5 w-full bg-slate-200 mt-1 rounded-full"></div>
+                </div>
+                <p className="text-slate-800 font-bold text-lg leading-relaxed mb-6">
+                  {major.careers.join(" - ")}
+                </p>
+              </div>
+
+              <button className="w-full mt-auto flex items-center justify-center gap-2 text-sm font-bold text-primary-950 py-3 glass-morphism border border-indigo-100/20 rounded-xl hover:bg-white/60 transition-all shadow-sm">
                 تفاصيل المسار
                 <ArrowLeft size={16} />
               </button>

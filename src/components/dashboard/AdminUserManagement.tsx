@@ -7,26 +7,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-type Role = 'ADMIN' | 'COUNSELOR' | 'STUDENT';
-type Status = 'ACTIVE' | 'SUSPENDED';
-
-interface UserData {
-  id: string;
-  name: string;
-  email: string;
-  role: Role;
-  status: Status;
-  joinDate: string;
-  school?: string;
-}
-
-const mockUsers: UserData[] = [
-  { id: '1', name: 'أحمد الطالب', email: 'ahmed@student.com', role: 'STUDENT', status: 'ACTIVE', joinDate: '2023-09-01', school: 'ثانوية الأمل' },
-  { id: '2', name: 'جابر العتيبي', email: 'jaber@student.com', role: 'STUDENT', status: 'ACTIVE', joinDate: '2023-09-15', school: 'ثانوية المجد' },
-  { id: '3', name: 'المستشار التربوي', email: 'counselor@masari.com', role: 'COUNSELOR', status: 'ACTIVE', joinDate: '2023-08-10' },
-  { id: '4', name: 'سارة خالد', email: 'sara@counselor.com', role: 'COUNSELOR', status: 'SUSPENDED', joinDate: '2023-08-12' },
-  { id: '5', name: 'مدير النظام', email: 'admin@masari.com', role: 'ADMIN', status: 'ACTIVE', joinDate: '2023-01-01' },
-];
+import { mockUsers, UserData, Role, Status } from '@/lib/data/mockUsers';
 
 export default function AdminUserManagement() {
   const [users, setUsers] = useState<UserData[]>(mockUsers);

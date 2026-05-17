@@ -10,62 +10,45 @@ export interface Major {
     control?: number;
     openness?: number;
   };
+  fixedCompatibility?: number;
 }
 
 export const majors: Major[] = [
   {
-    id: "cs",
-    name: "علوم الحاسوب (Computer Science)",
-    hollandTypes: ["I", "C", "R"],
+    id: "scientific",
+    name: "ملمح علمي",
+    hollandTypes: ["I", "R"],
     requiredAbilities: ["M", "L"],
-    description: "دراسة أنظمة الحاسوب، البرمجيات، والذكاء الاصطناعي.",
-    careers: ["مطور برمجيات", "محلل بيانات", "مهندس ذكاء اصطناعي"],
-    personalityTraits: { extroversion: 30, control: 80, openness: 90 }
+    description: "يهتم بالمواد العلمية والبحث والتحليل.",
+    careers: ["طبيب", "باحث", "أستاذ علوم", "مهندس"],
+    fixedCompatibility: 100
   },
   {
-    id: "medicine",
-    name: "الطب البشري (Medicine)",
-    hollandTypes: ["I", "S", "R"],
-    requiredAbilities: ["L", "Mem", "M"],
-    description: "تشخيص وعلاج الأمراض وتحسين الصحة العامة.",
-    careers: ["طبيب عام", "جراح", "باحث طبي"],
-    personalityTraits: { extroversion: 60, control: 95, openness: 70 }
+    id: "vocational",
+    name: "تكوين مهني",
+    hollandTypes: ["R", "E"],
+    requiredAbilities: ["S"],
+    description: "يعتمد على تعلم مهنة بشكل مباشر.",
+    careers: ["الحلاقة", "الطبخ", "الإعلام الآلي", "الخياطة", "الكهرباء", "التبريد", "الميكانيك"],
+    fixedCompatibility: 85
   },
   {
-    id: "architecture",
-    name: "الهندسة المعمارية (Architecture)",
-    hollandTypes: ["A", "R", "I"],
-    requiredAbilities: ["S", "M"],
-    description: "تصميم المباني والمنشآت بلمسة فنية وهندسية.",
-    careers: ["مهندس معماري", "مصمم داخلي", "مخطط مدن"],
-    personalityTraits: { extroversion: 50, control: 75, openness: 95 }
-  },
-  {
-    id: "business",
-    name: "إدارة الأعمال (Business Administration)",
-    hollandTypes: ["E", "C", "S"],
-    requiredAbilities: ["L", "M"],
-    description: "إدارة المؤسسات، التخطيط الاستراتيجي، والتمويل.",
-    careers: ["مدير مشاريع", "محلل مالي", "رائد أعمال"],
-    personalityTraits: { extroversion: 90, control: 85, openness: 80 }
-  },
-  {
-    id: "law",
-    name: "الحقوق (Law)",
-    hollandTypes: ["E", "I", "S"],
-    requiredAbilities: ["L", "Mem"],
-    description: "دراسة الأنظمة القانونية والدفاع عن الحقوق.",
-    careers: ["محامي", "قاضي", "مستشار قانوني"],
-    personalityTraits: { extroversion: 80, control: 90, openness: 60 }
-  },
-  {
-    id: "psychology",
-    name: "علم النفس (Psychology)",
-    hollandTypes: ["S", "I", "A"],
+    id: "literary",
+    name: "ملمح أدبي",
+    hollandTypes: ["A", "S"],
     requiredAbilities: ["L", "S"],
-    description: "دراسة السلوك الإنساني والعمليات العقلية.",
-    careers: ["أخصائي نفسي", "مرشد اجتماعي", "باحث سلوكي"],
-    personalityTraits: { extroversion: 70, control: 60, openness: 85 }
+    description: "يهتم بالفكر والكتابة و العلوم الإنسانية.",
+    careers: ["كاتب", "صحفي", "أستاذ لغة أو تاريخ", "مترجم"],
+    fixedCompatibility: 79
+  },
+  {
+    id: "technical",
+    name: "ملمح تقني",
+    hollandTypes: ["R", "I"],
+    requiredAbilities: ["M", "S"],
+    description: "يركز على التطبيق العملي واستعمال التكنولوجيا و الأجهزة.",
+    careers: ["تقني إعلام آلي", "مبرمج", "تقني صيانة", "مصمم جرافيك"],
+    fixedCompatibility: 79
   }
 ];
 
@@ -75,6 +58,10 @@ export function calculateCompatibility(
   major: Major,
   userPersonality?: { extroversion: number, control: number, openness: number }
 ): number {
+  if (major.fixedCompatibility !== undefined) {
+    return major.fixedCompatibility;
+  }
+
   let score = 0;
   let totalWeight = 100;
   

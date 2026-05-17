@@ -7,10 +7,10 @@ export default function MessagesView() {
   const [activeChat, setActiveChat] = useState(1);
 
   const contacts = [
-    { id: 1, name: "أحمد بن محمد", lastMsg: "متى موعد الجلسة القادمة؟", time: "10:30 ص", unread: 2, online: true },
-    { id: 2, name: "سارة العلي", lastMsg: "شكراً لك على التوجيه", time: "أمس", unread: 0, online: false },
-    { id: 3, name: "خالد العمودي", lastMsg: "لقد أرسلت الملف المطلوب", time: "8 أفريل", unread: 0, online: true },
-    { id: 4, name: "نورة القحطاني", lastMsg: "هل يمكن تغيير الموعد؟", time: "7 أفريل", unread: 0, online: false },
+    { id: 1, name: "أحمد بوعلام", lastMsg: "متى موعد الجلسة القادمة؟", time: "10:30 ص", unread: 2, online: true },
+    { id: 2, name: "سارة بن علي", lastMsg: "شكراً لك على التوجيه", time: "أمس", unread: 0, online: false },
+    { id: 3, name: "الياس منصوري", lastMsg: "لقد أرسلت الملف المطلوب", time: "8 أفريل", unread: 0, online: true },
+    { id: 4, name: "نريمان قاسمي", lastMsg: "هل يمكن تغيير الموعد؟", time: "7 أفريل", unread: 0, online: false },
   ];
 
   const messages = [

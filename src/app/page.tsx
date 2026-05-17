@@ -183,15 +183,13 @@ export default function LandingPage() {
                     {" "}
                     هي منصة رقمية متخصصة في{" "}
                     <span className="text-primary-800 py-1 px-2 mx-1 bg-primary-100 rounded-lg whitespace-nowrap">
-                      توزيع، تنظيم،
+                      تفريغ، تنظيم،
                     </span>{" "}
-                    تحليل نتائج المقاييس النفسية والمهنية؛ تهدف إلى دعم{" "}
+                    تحليل، تهدف إلى دعم{" "}
                     <span className="text-black ">مستشاري التوجيه</span>،{" "}
                     <span className="text-black ">الأخصائيين النفسيين</span>،{" "}
                     <span className="text-black ">التلاميذ</span>، و{" "}
-                    <span className="text-black ">أولياء الأمور</span>، في فهم
-                    السمات الشخصية والمهنية، وتقديم إرشادات عملية، وخطط تطوير
-                    المهارات، مع توفير استشارات نفسية عن بعد.{" "}
+                    <span className="text-black ">أولياء الأمور</span>، في فهم ملامح السمات الشخصية و المهنية العامة،و تقديم إرشادات عملية،وخطط تطوير المهارات ،استشارات نفسية عن بعد متى لزم ذلك.{" "}
                   </p>{" "}
                 </div>{" "}
               </div>{" "}
@@ -213,10 +211,9 @@ export default function LandingPage() {
                       {" "}
                       كما تتيح{" "}
                       <span className="text-rose-700 ">
-                        للباحثين الأكاديميين
+                        للمهتمين من غير قطاع التربية كالباحثين
                       </span>{" "}
-                      الوصول إلى مقاييس موثوقة لإجراء الدراسات العلمية بسهولة
-                      ودقة عالية.{" "}
+                      الوصول إلى مقاييس معتمدة ومدفوعة لإجراء الدراسات العلمية بسهولة و دقة.{" "}
                     </p>{" "}
                   </div>{" "}
                 </div>{" "}
@@ -310,7 +307,7 @@ export default function LandingPage() {
                   subtitle: "تفاعل مباشر بين المختصين والمستفيدين",
                   icon: <MessageSquare size={28} />,
                   bgColor: "bg-orange-100 text-orange-600",
-                  items: ["تواصل بين المستشار والتلميذ والأخصائي وزبائنه", "الرد على الاستفسارات ومتابعة الحالات"]
+                  items: ["التواصل بين المستشار والتلميذ و الأخصائي الخارجي و زبنائه.", "الرد على الاستفسارات ومتابعة الحالات"]
                 },
                 {
                   id: "6",
@@ -334,7 +331,7 @@ export default function LandingPage() {
                   subtitle: "تجربة مبسطة للتلميذ أو المستخدم",
                   icon: <GraduationCap size={28} />,
                   bgColor: "bg-emerald-100 text-emerald-600",
-                  items: ["إجراء المقاييس", "الاطلاع على النتائج وطلب استشارة", "التواصل مع المختص"]
+                  items: ["الإستجابة للإستمارات ضمن أغراض القياس.", "التواصل مع المختص"]
                 },
                 {
                   id: "9",
@@ -389,7 +386,7 @@ export default function LandingPage() {
                 {
                   step: "1",
                   title: "إنشاء حساب مهني أو مستخدم",
-                  desc: "(أخصائي / مستشار / طالب / باحث)",
+                  desc: "(أخصائي / مستشار / تلميذ / باحث)",
                 },
                 {
                   step: "2",
@@ -514,17 +511,17 @@ export default function LandingPage() {
               {" "}
               {[
                 {
-                  name: "د. محمد عبدالله",
+                  name: "د.عبد الله زايد",
                   role: "خبير مقاييس نفسية",
                   info: "خبرة 15 عاماً في التوجيه المهني",
                 },
                 {
-                  name: "أ. سارة المنصور",
+                  name: "أ.مريم آلاء",
                   role: "مستشارة أكاديمية",
                   info: "متخصصة في مسارات التعليم العالي",
                 },
                 {
-                  name: "د. فهد القحطاني",
+                  name: "د.سارة ربيعة",
                   role: "محلل بيانات تربوية",
                   info: "خبير في بناء الاختبارات والقدرات",
                 },
@@ -678,10 +675,7 @@ export default function LandingPage() {
               <ul className="space-y-4 text-sm text-slate-800 font-medium">
                 {" "}
                 <li className="flex items-center justify-end gap-2">
-                  support@masari.com <Mail size={16} />
-                </li>{" "}
-                <li className="flex items-center justify-end gap-2">
-                  +966 500 000 000 <Users size={16} />
+                  contact@masari.dz <Mail size={16} />
                 </li>{" "}
               </ul>{" "}
             </div>{" "}

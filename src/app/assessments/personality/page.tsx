@@ -12,7 +12,7 @@ export default function PersonalityPage() {
     // In a real app, we would save results to a global state or database
     // For now, we'll store in localStorage and redirect
     localStorage.setItem('user_personality', JSON.stringify(results));
-    router.push('/dashboard/results');
+    router.push('/dashboard');
   };
 
   return (

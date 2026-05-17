@@ -128,15 +128,15 @@ export default function SkillDevelopmentPlan() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex gap-4 items-start bg-white/5 p-4 rounded-2xl backdrop-blur-sm border border-white/10">
               <Clock className="text-blue-400 shrink-0" size={20} />
-              <p className="text-sm text-slate-600">ابدأ بمهارات التنظيم الزمني فهي القاعدة الأساسية للنجاح الأكاديمي.</p>
+              <p className="text-sm text-slate-200">ابدأ بمهارات التنظيم الزمني فهي القاعدة الأساسية للنجاح الأكاديمي.</p>
             </div>
             <div className="flex gap-4 items-start bg-white/5 p-4 rounded-2xl backdrop-blur-sm border border-white/10">
               <MessageSquare className="text-green-400 shrink-0" size={20} />
-              <p className="text-sm text-slate-600">ممارسة التواصل الفعال في الأنشطة الصفية ستزيد من ثقتك بنفسك.</p>
+              <p className="text-sm text-slate-200">ممارسة التواصل الفعال في الأنشطة الصفية ستزيد من ثقتك بنفسك.</p>
             </div>
             <div className="flex gap-4 items-start bg-white/5 p-4 rounded-2xl backdrop-blur-sm border border-white/10">
               <Zap className="text-amber-400 shrink-0" size={20} />
-              <p className="text-sm text-slate-600">خصص وقت للإبداع والابتكار خارج المنهاج الدراسي لتنمية روح المبادرة.</p>
+              <p className="text-sm text-slate-200">خصص وقت للإبداع والابتكار خارج المنهاج الدراسي لتنمية روح المبادرة.</p>
             </div>
           </div>
         </div>

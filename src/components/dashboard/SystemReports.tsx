@@ -7,24 +7,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-type LogType = 'USER' | 'ASSESSMENT' | 'SESSION' | 'SYSTEM';
-
-interface AuditLog {
-  id: string;
-  action: string;
-  type: LogType;
-  user: string;
-  role: 'ADMIN' | 'COUNSELOR' | 'STUDENT';
-  timestamp: string;
-}
-
-const mockLogs: AuditLog[] = [
-  { id: '1', action: 'أكمل مقياس هولاند للميول المهنية', type: 'ASSESSMENT', user: 'أحمد الطالب', role: 'STUDENT', timestamp: 'منذ 5 دقائق' },
-  { id: '2', action: 'أضاف جلسة إرشادية جديدة مع محمد', type: 'SESSION', user: 'المستشار التربوي', role: 'COUNSELOR', timestamp: 'منذ ساعتين' },
-  { id: '3', action: 'أنشأ حساب مستشار جديد (سارة خالد)', type: 'USER', user: 'مدير النظام', role: 'ADMIN', timestamp: 'منذ 5 ساعات' },
-  { id: '4', action: 'قام بتحديث إعدادات خادم البريد', type: 'SYSTEM', user: 'مدير النظام', role: 'ADMIN', timestamp: 'بالأمس' },
-  { id: '5', action: 'سجل الدخول للنظام', type: 'USER', user: 'جابر العتيبي', role: 'STUDENT', timestamp: 'بالأمس' },
-];
+import { mockLogs, AuditLog, LogType } from '@/lib/data/mockLogs';
 
 export default function SystemReports() {
   const [logs] = useState<AuditLog[]>(mockLogs);

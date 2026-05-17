@@ -7,6 +7,7 @@ import StudentProfile from '@/components/dashboard/StudentProfile';
 import TestResults from '@/components/dashboard/TestResults';
 import StrengthsAnalysis from '@/components/dashboard/StrengthsAnalysis';
 import SkillDevelopmentPlan from '@/components/dashboard/SkillDevelopmentPlan';
+import StudentVisualAnalytics from '@/components/dashboard/StudentVisualAnalytics';
 import { 
   LayoutDashboard, 
   GraduationCap, 
@@ -18,12 +19,13 @@ import {
   Zap, 
   Target,
   Menu,
-  X
+  X,
+  TrendingUp
 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function StudentDashboard() {
-  const [activeTab, setActiveTab] = useState<'profile' | 'results' | 'strengths' | 'recommendations' | 'comparison' | 'skill-plan'>('results');
+  const [activeTab, setActiveTab] = useState<'profile' | 'results' | 'strengths' | 'recommendations' | 'comparison' | 'skill-plan' | 'analytics'>('results');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Load results from localStorage if available
@@ -66,8 +68,9 @@ export default function StudentDashboard() {
            {[
              { id: 'profile', label: 'الملف الشخصي', icon: <User size={20} /> },
              { id: 'results', label: 'نتائج الاختبارات', icon: <ClipboardList size={20} /> },
-             { id: 'strengths', label: 'نقاط القوة التخصصية', icon: <Zap size={20} /> },
-             { id: 'recommendations', label: 'التوصيات الأكاديمية', icon: <GraduationCap size={20} /> },
+             { id: 'strengths', label: 'مهارات أكاديمية', icon: <Zap size={20} /> },
+             { id: 'analytics', label: 'مهارات مهنية', icon: <TrendingUp size={20} /> },
+             { id: 'recommendations', label: 'توصيات أكاديمية', icon: <GraduationCap size={20} /> },
              { id: 'comparison', label: 'أداة المقارنة', icon: <GitCompare size={20} /> },
              { id: 'skill-plan', label: 'خطة تطوير المهارات', icon: <Target size={20} /> },
            ].map((item) => (
@@ -83,14 +86,14 @@ export default function StudentDashboard() {
         </nav>
 
         <div className="p-4 border-t border-slate-100 ">
-           <div className="p-4 rounded-2xl bg-slate-50  flex items-center gap-3">
-              <div className="w-10 h-10 bg-slate-200  rounded-full flex items-center justify-center font-bold">أ</div>
+           <div className="p-4 rounded-2xl bg-white/60 flex items-center gap-3 border border-indigo-100/30 shadow-sm">
+              <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center font-bold text-primary-600">أ</div>
               <div className="flex-1 overflow-hidden">
-                 <div className="text-sm font-bold text-slate-900  truncate">أحمد الطالب</div>
+                 <div className="text-xs font-bold text-slate-900 truncate">أحمد بوعلام</div>
                  <div className="text-[10px] text-slate-500 truncate">ahmed@student.com</div>
               </div>
               <Link href="/login" onClick={() => localStorage.removeItem('userRole')} title="تسجيل الخروج">
-                 <LogOut size={16} className="text-slate-500 cursor-pointer hover:text-red-500" />
+                 <LogOut size={16} className="text-slate-500 cursor-pointer hover:text-red-500 transition-colors" />
               </Link>
            </div>
         </div>
@@ -122,6 +125,13 @@ export default function StudentDashboard() {
             {activeTab === 'profile' && <StudentProfile />}
             {activeTab === 'results' && (
               <TestResults 
+                userHolland={userHolland} 
+                userAbilities={userAbilities} 
+                userPersonality={userPersonality}
+              />
+            )}
+            {activeTab === 'analytics' && (
+              <StudentVisualAnalytics 
                 userHolland={userHolland} 
                 userAbilities={userAbilities} 
                 userPersonality={userPersonality}
@@ -169,8 +179,9 @@ export default function StudentDashboard() {
                 {[
                   { id: 'profile', label: 'الملف الشخصي', icon: <User size={20} /> },
                   { id: 'results', label: 'نتائج الاختبارات', icon: <ClipboardList size={20} /> },
-                  { id: 'strengths', label: 'نقاط القوة التخصصية', icon: <Zap size={20} /> },
-                  { id: 'recommendations', label: 'التوصيات الأكاديمية', icon: <GraduationCap size={20} /> },
+                  { id: 'strengths', label: 'مهارات أكاديمية', icon: <Zap size={20} /> },
+                  { id: 'analytics', label: 'مهارات مهنية', icon: <TrendingUp size={20} /> },
+                  { id: 'recommendations', label: 'توصيات أكاديمية', icon: <GraduationCap size={20} /> },
                   { id: 'comparison', label: 'أداة المقارنة', icon: <GitCompare size={20} /> },
                   { id: 'skill-plan', label: 'خطة تطوير المهارات', icon: <Target size={20} /> },
                 ].map((item) => (
@@ -183,6 +194,11 @@ export default function StudentDashboard() {
                     {item.label}
                   </button>
                 ))}
+                 
+                <Link href="/login" onClick={() => localStorage.removeItem('userRole')} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-red-500 hover:bg-red-50 transition-all mt-4">
+                   <LogOut size={20} />
+                   تسجيل الخروج
+                </Link>
              </nav>
            </aside>
          </div>

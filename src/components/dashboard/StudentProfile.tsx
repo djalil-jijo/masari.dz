@@ -7,12 +7,12 @@ import { motion } from 'framer-motion';
 export default function StudentProfile() {
   const [isEditing, setIsEditing] = useState(false);
   const [profile, setProfile] = useState({
-    name: "أحمد بن محمد",
+    name: "أحمد بوعلام",
     email: "ahmed@student.com",
-    grade: "الصف الثالث ثانوي - علمي",
-    school: "ثانوية المتفوقين النموذجية",
+    grade: "السنة الثالثة ثانوي - علمي",
+    school: "ثانوية الرياضيات الوطنية بالقبة",
     goal: "هندسة البرمجيات أو الذكاء الاصطناعي",
-    location: "الرياض، المملكة العربية السعودية"
+    location: "الجزائر العاصمة، الجزائر"
   });
 
   return (

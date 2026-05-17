@@ -29,9 +29,10 @@ import AdminAssessments from '@/components/dashboard/AdminAssessments';
 import SystemReports from '@/components/dashboard/SystemReports';
 import AdminSystemSettings from '@/components/dashboard/AdminSystemSettings';
 import AdminContentManagement from '@/components/dashboard/AdminContentManagement';
+import DataAnalytics from '@/components/dashboard/DataAnalytics';
 
 export default function AdminPage() {
-  const [activeTab, setActiveTab] = useState<'monitoring' | 'users' | 'assessments' | 'content' | 'reports' | 'settings'>('monitoring');
+  const [activeTab, setActiveTab] = useState<'monitoring' | 'users' | 'assessments' | 'content' | 'reports' | 'settings' | 'analytics'>('monitoring');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -55,6 +56,7 @@ export default function AdminPage() {
         <nav className="flex-1 p-4 space-y-1.5 overflow-y-auto mt-4">
            {[
              { id: 'monitoring', label: 'لوحة المراقبة والإحصاء', icon: <BarChart3 size={18} /> },
+             { id: 'analytics', label: 'تحليلات بيانات الطلبة', icon: <TrendingUp size={18} /> },
              { id: 'users', label: 'إدارة المستخدمين والمهام', icon: <Users size={18} /> },
              { id: 'assessments', label: 'إدارة المقاييس', icon: <ClipboardList size={18} /> },
              { id: 'content', label: 'إدارة المحتوى والإعلانات', icon: <FileText size={18} /> },
@@ -98,6 +100,7 @@ export default function AdminPage() {
               </button>
               <h2 className="text-sm md:text-lg font-bold text-slate-900">
                 {activeTab === 'monitoring' && "لوحة المراقبة والإحصاء"}
+                {activeTab === 'analytics' && "تحليلات بيانات الطلبة"}
                 {activeTab === 'users' && "إدارة المستخدمين والمهام"}
                 {activeTab === 'assessments' && "إدارة المقاييس والتخصصات"}
                 {activeTab === 'content' && "إدارة المحتوى والمقالات"}
@@ -123,6 +126,7 @@ export default function AdminPage() {
 
          <div className="flex-1 overflow-y-auto bg-transparent p-4 md:p-8">
             {activeTab === 'monitoring' && <AdminDashboard setActiveTab={setActiveTab as any} />}
+            {activeTab === 'analytics' && <DataAnalytics />}
             {activeTab === 'users' && <AdminUserManagement />}
             {activeTab === 'assessments' && <AdminAssessments />}
             {activeTab === 'content' && <AdminContentManagement />}

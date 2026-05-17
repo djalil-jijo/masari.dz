@@ -8,11 +8,11 @@ export default function StudentFilesView() {
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const files = [
-    { name: "تقرير النفسي - أحمد محمد.pdf", type: "PDF", size: "2.4 MB", date: "2026/04/05", student: "أحمد بن محمد" },
-    { name: "نتائج اختبار هولاند.xlsx", type: "XLSX", size: "1.1 MB", date: "2026/04/04", student: "سارة العلي" },
-    { name: "خطة التوجيه المهني.docx", type: "DOCX", size: "850 KB", date: "2026/04/02", student: "خالد العمودي" },
-    { name: "اختبار الميول الموسع.pdf", type: "PDF", size: "3.2 MB", date: "2026/03/28", student: "نورة القحطاني" },
-    { name: "شهادة إتمام الجلسات.pdf", type: "PDF", size: "1.5 MB", date: "2026/03/15", student: "أحمد بن محمد" },
+    { name: "تقرير النفسي - أحمد بوعلام.pdf", type: "PDF", size: "2.4 MB", date: "2026/04/05", student: "أحمد بوعلام" },
+    { name: "نتائج اختبار هولاند.xlsx", type: "XLSX", size: "1.1 MB", date: "2026/04/04", student: "سارة بن علي" },
+    { name: "خطة التوجيه المهني.docx", type: "DOCX", size: "850 KB", date: "2026/04/02", student: "الياس منصوري" },
+    { name: "اختبار الميول الموسع.pdf", type: "PDF", size: "3.2 MB", date: "2026/03/28", student: "نريمان قاسمي" },
+    { name: "شهادة إتمام الجلسات.pdf", type: "PDF", size: "1.5 MB", date: "2026/03/15", student: "أحمد بوعلام" },
   ];
 
   return (

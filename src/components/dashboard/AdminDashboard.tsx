@@ -1,11 +1,34 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Users, BookOpen, TrendingUp, BarChart3, PieChart, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { 
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  Cell
+} from 'recharts';
+import { mockStudentsAnalytics } from '@/lib/data/mockStudentsAnalytics';
+
+const COLORS = ['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f59e0b', '#10b981'];
 
 export default function AdminDashboard({ setActiveTab }: { setActiveTab?: (tab: string) => void }) {
   const [timeFilter, setTimeFilter] = useState<'today' | 'week' | 'month'>('today');
+  
+  const hollandSummary = useMemo(() => {
+    const counts: Record<string, number> = { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 };
+    mockStudentsAnalytics.slice(0, 50).forEach(student => {
+      student.holland.forEach(type => counts[type] += 1);
+    });
+    return [
+      { name: 'R', value: counts['R'] },
+      { name: 'I', value: counts['I'] },
+      { name: 'A', value: counts['A'] },
+      { name: 'S', value: counts['S'] },
+      { name: 'E', value: counts['E'] },
+      { name: 'C', value: counts['C'] },
+    ];
+  }, []);
+
   const stats = [
     { label: "إجمالي الطلاب", value: "1,240", icon: <Users size={20} />, color: "bg-blue-500", trend: "+12%" },
     { label: "الاختبارات المنفذة", value: "3,850", icon: <BookOpen size={20} />, color: "bg-purple-500", trend: "+8%" },
@@ -14,10 +37,10 @@ export default function AdminDashboard({ setActiveTab }: { setActiveTab?: (tab: 
   ];
 
   const recentAssessments = [
-    { name: "أحمد بن محمد", test: "هولاند للميول", score: "R-I-C", date: "منذ ساعتين" },
-    { name: "سارة العلي", test: "القدرات العقلية", score: "85%", date: "منذ 3 ساعات" },
-    { name: "خالد العمودي", test: "هولاند للميول", score: "S-A-E", date: "منذ 5 ساعات" },
-    { name: "نورة القحطاني", test: "القدرات العقلية", score: "92%", date: "أمس" },
+    { name: "أحمد بوعلام", test: "هولاند للميول", score: "R-I-C", date: "منذ ساعتين" },
+    { name: "سارة بن علي", test: "القدرات العقلية", score: "85%", date: "منذ 3 ساعات" },
+    { name: "الياس منصوري", test: "هولاند للميول", score: "S-A-E", date: "منذ 5 ساعات" },
+    { name: "نريمان قاسمي", test: "القدرات العقلية", score: "92%", date: "أمس" },
   ];
 
   return (
@@ -56,58 +79,38 @@ export default function AdminDashboard({ setActiveTab }: { setActiveTab?: (tab: 
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Chart Area Mockup */}
-        <div className="lg:col-span-2 glass-morphism rounded-3xl p-8">
+        {/* Real Chart Area */}
+        <div className="lg:col-span-2 glass-morphism rounded-3xl p-8 border border-white/40">
           <div className="flex items-center justify-between mb-8">
              <h3 className="text-lg font-bold text-primary-950 flex items-center gap-2">
                 <PieChart size={18} className="text-primary-600" />
-                توزيع الميول المهنية للطلاب
+                توزيع الميول المهنية (نظرة سريعة)
              </h3>
-             <BarChart3 size={18} className="text-slate-500" />
+             <button 
+               onClick={() => setActiveTab && setActiveTab('analytics')}
+               className="text-xs font-bold text-primary-600 hover:underline flex items-center gap-1"
+             >
+               فتح التحليلات الكاملة
+               <BarChart3 size={14} />
+             </button>
           </div>
-          <div className="h-64 flex items-end justify-between gap-4 px-4 pb-4">
-             <div className="flex-1 space-y-4">
-                <div className="flex justify-between text-xs font-bold text-slate-500 px-1">
-                  <span>R</span>
-                  <span>25%</span>
-                </div>
-                <div className="h-40 bg-orange-500 rounded-2xl animate-pulse"></div>
-             </div>
-             <div className="flex-1 space-y-4">
-                <div className="flex justify-between text-xs font-bold text-slate-500 px-1">
-                  <span>I</span>
-                  <span>18%</span>
-                </div>
-                <div className="h-32 bg-blue-500 rounded-2xl animate-pulse"></div>
-             </div>
-             <div className="flex-1 space-y-4">
-                <div className="flex justify-between text-xs font-bold text-slate-500 px-1">
-                  <span>A</span>
-                  <span>15%</span>
-                </div>
-                <div className="h-24 bg-pink-500 rounded-2xl animate-pulse"></div>
-             </div>
-             <div className="flex-1 space-y-4">
-                <div className="flex justify-between text-xs font-bold text-slate-500 px-1">
-                  <span>S</span>
-                  <span>22%</span>
-                </div>
-                <div className="h-36 bg-green-500 rounded-2xl animate-pulse"></div>
-             </div>
-             <div className="flex-1 space-y-4">
-                <div className="flex justify-between text-xs font-bold text-slate-500 px-1">
-                  <span>E</span>
-                  <span>12%</span>
-                </div>
-                <div className="h-20 bg-red-500 rounded-2xl animate-pulse"></div>
-             </div>
-             <div className="flex-1 space-y-4">
-                <div className="flex justify-between text-xs font-bold text-slate-500 px-1">
-                  <span>C</span>
-                  <span>8%</span>
-                </div>
-                <div className="h-16 bg-purple-500 rounded-2xl animate-pulse"></div>
-             </div>
+          
+          <div className="h-64 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={hollandSummary} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b', fontWeight: 'bold' }} />
+                <Tooltip 
+                  cursor={{ fill: 'rgba(99, 102, 241, 0.05)' }}
+                  contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
+                />
+                <Bar dataKey="value" radius={[6, 6, 0, 0]} barSize={40}>
+                  {hollandSummary.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
 

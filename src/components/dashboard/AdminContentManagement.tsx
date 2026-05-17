@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   FileText, 
   Plus, 
@@ -17,21 +17,80 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const contentItems = [
+const initialContentItems = [
   { id: 1, title: "كيف تختار تخصصك الجامعي؟", category: "مقالات", date: "2024-04-10", status: "Published", author: "د. أحمد", views: 1240 },
   { id: 2, title: "أهمية مقياس هولاند في التوجيه", category: "أدلة مهنية", date: "2024-04-08", status: "Published", author: "أ. سارة", views: 856 },
   { id: 3, title: "إعلان: فتح باب التسجيل للمقياس الجماعي", category: "إعلانات", date: "2024-04-12", status: "Draft", author: "المدير", views: 0 },
-  { id: 4, title: "فهم السمات الشخصية الخمس الكبرى", category: "مقالات", date: "2024-04-05", status: "Published", author: "د. فهد", views: 2100 },
+  { id: 4, title: "فهم السمات الشخصية الخمس الكبرى", category: "مقالات", date: "2024-04-05", status: "Published", author: "د. كريم", views: 2100 },
 ];
 
 export default function AdminContentManagement() {
   const [filter, setFilter] = useState('All');
-  const [items, setItems] = useState(contentItems);
+  const [items, setItems] = useState<any[]>(initialContentItems);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  
+  // Form states
+  const [formTitle, setFormTitle] = useState('');
+  const [formCategory, setFormCategory] = useState('مقالات');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('admin_content_items');
+    if (saved) {
+      try {
+        setItems(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse saved items", e);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('admin_content_items', JSON.stringify(items));
+  }, [items]);
 
   const filteredItems = items.filter(item => filter === 'All' || filter === 'الكل' || item.category === filter);
+
+  const handleSave = () => {
+    if (!formTitle.trim()) return;
+
+    if (isAddModalOpen) {
+      const newItem = {
+        id: Date.now(),
+        title: formTitle,
+        category: formCategory,
+        date: new Date().toISOString().split('T')[0],
+        status: "Published",
+        author: "الإدارة",
+        views: 0
+      };
+      setItems([newItem, ...items]);
+    } else if (isEditModalOpen && selectedItem) {
+      setItems(items.map(item => 
+        item.id === selectedItem.id 
+          ? { ...item, title: formTitle, category: formCategory }
+          : item
+      ));
+    }
+
+    closeModal();
+  };
+
+  const closeModal = () => {
+    setIsAddModalOpen(false);
+    setIsEditModalOpen(false);
+    setSelectedItem(null);
+    setFormTitle('');
+    setFormCategory('مقالات');
+  };
+
+  const openEditModal = (item: any) => {
+    setSelectedItem(item);
+    setFormTitle(item.title);
+    setFormCategory(item.category);
+    setIsEditModalOpen(true);
+  };
 
   return (
     <div className="space-y-8 animate-fade-in">
@@ -40,7 +99,7 @@ export default function AdminContentManagement() {
           <h2 className="text-3xl font-bold text-primary-950 ">إدارة المحتوى والإعلانات</h2>
           <p className="text-slate-700  font-medium">إدارة المقالات، الأدلة الإرشادية، والتنبيهات العامة للمنصة</p>
         </div>
-        <button onClick={() => setIsAddModalOpen(true)} className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-2xl font-bold shadow-lg shadow-primary-600/30 hover:bg-primary-700 transition-all hover:scale-105 active:scale-95">
+        <button onClick={() => { setFormTitle(''); setFormCategory('مقالات'); setIsAddModalOpen(true); }} className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-2xl font-bold shadow-lg shadow-primary-600/30 hover:bg-primary-700 transition-all hover:scale-105 active:scale-95">
           <Plus size={20} />
           إضافة محتوى جديد
         </button>
@@ -114,7 +173,7 @@ export default function AdminContentManagement() {
                 <div className="h-8 w-[1px] bg-indigo-100/20 mx-2 hidden md:block"></div>
 
                 <div className="flex items-center gap-1">
-                  <button onClick={() => { setSelectedItem(item); setIsEditModalOpen(true); }} className="p-2 text-slate-500 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all" title="تعديل">
+                  <button onClick={() => openEditModal(item)} className="p-2 text-slate-500 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all" title="تعديل">
                     <Edit2 size={18} />
                   </button>
                   <button onClick={() => setItems(prev => prev.filter(i => i.id !== item.id))} className="p-2 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="حذف">
@@ -134,18 +193,18 @@ export default function AdminContentManagement() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="glass-morphism p-6 rounded-3xl border border-green-100/20 bg-green-50/10">
            <div className="text-slate-500 text-xs font-bold mb-2">إجمالي المقالات</div>
-           <div className="text-2xl font-bold text-primary-950 ">124 مقالاً</div>
-           <div className="text-[10px] text-green-500 font-bold mt-2">+12 مقالاً هذا الشهر</div>
+           <div className="text-2xl font-bold text-primary-950 ">{items.filter(i => i.category === 'مقالات').length} مقالاً</div>
+           <div className="text-[10px] text-green-500 font-bold mt-2">محفوظ محلياً</div>
         </div>
         <div className="glass-morphism p-6 rounded-3xl border border-blue-100/20 bg-blue-50/10">
-           <div className="text-slate-500 text-xs font-bold mb-2">المشاهدات الكلية</div>
-           <div className="text-2xl font-bold text-primary-950 ">45.2K</div>
-           <div className="text-[10px] text-blue-500 font-bold mt-2">زيادة 8% عن الأسبوع الماضي</div>
+           <div className="text-slate-500 text-xs font-bold mb-2">إجمالي الأدلة</div>
+           <div className="text-2xl font-bold text-primary-950 ">{items.filter(i => i.category === 'أدلة مهنية').length} أدلة</div>
+           <div className="text-[10px] text-blue-500 font-bold mt-2">محفوظ محلياً</div>
         </div>
         <div className="glass-morphism p-6 rounded-3xl border border-indigo-100/20 bg-indigo-50/10">
            <div className="text-slate-500 text-xs font-bold mb-2">إعلانات نشطة</div>
-           <div className="text-2xl font-bold text-primary-950 ">3 إعلانات</div>
-           <div className="text-[10px] text-indigo-500 font-bold mt-2">تغطي كامل المنصة</div>
+           <div className="text-2xl font-bold text-primary-950 ">{items.filter(i => i.category === 'إعلانات').length} إعلانات</div>
+           <div className="text-[10px] text-indigo-500 font-bold mt-2">محفوظ محلياً</div>
         </div>
       </div>
 
@@ -159,11 +218,20 @@ export default function AdminContentManagement() {
              <div className="space-y-4 font-arabic">
                 <div>
                    <label className="block text-sm font-bold text-slate-700 mb-2">العنوان</label>
-                   <input type="text" defaultValue={isEditModalOpen ? selectedItem?.title : ''} className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm" />
+                   <input 
+                     type="text" 
+                     value={formTitle}
+                     onChange={(e) => setFormTitle(e.target.value)}
+                     className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm" 
+                   />
                 </div>
                 <div>
                    <label className="block text-sm font-bold text-slate-700 mb-2">التصنيف</label>
-                   <select className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm">
+                   <select 
+                     value={formCategory}
+                     onChange={(e) => setFormCategory(e.target.value)}
+                     className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm"
+                   >
                       <option>مقالات</option>
                       <option>أدلة مهنية</option>
                       <option>إعلانات</option>
@@ -171,17 +239,13 @@ export default function AdminContentManagement() {
                 </div>
                 <div className="pt-4 flex items-center gap-3">
                    <button 
-                     onClick={() => {
-                        setIsAddModalOpen(false);
-                        setIsEditModalOpen(false);
-                        alert(isAddModalOpen ? 'تمت إضافة المحتوى بنجاح' : 'تم تعديل المحتوى بنجاح');
-                     }}
+                     onClick={handleSave}
                      className="flex-1 py-3 bg-primary-600 text-white rounded-xl font-bold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/20"
                    >
                      حفظ
                    </button>
                    <button 
-                     onClick={() => { setIsAddModalOpen(false); setIsEditModalOpen(false); }}
+                     onClick={closeModal}
                      className="px-6 py-3 bg-slate-100 text-slate-600 rounded-xl font-bold hover:bg-slate-200 transition-colors"
                    >
                      إلغاء
@@ -194,3 +258,4 @@ export default function AdminContentManagement() {
     </div>
   );
 }
+

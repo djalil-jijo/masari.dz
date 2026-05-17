@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Brain, CheckCircle2, ChevronLeft, ChevronRight, Timer, Lightbulb, BarChart3 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 type AbilityType = 'L' | 'M' | 'S' | 'Mem';
@@ -39,14 +40,14 @@ const abilityQuestions: AbilityQuestion[] = [
 export default function MentalAbilityTest() {
   const [currentPage, setCurrentPage] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
-  const [showResults, setShowResults] = useState(false);
   const [timeLeft, setTimeLeft] = useState(600); // 10 minutes
+  const router = useRouter();
 
   useEffect(() => {
-    if (showResults || timeLeft <= 0) return;
+    if (timeLeft <= 0) return;
     const timer = setInterval(() => setTimeLeft(prev => prev - 1), 1000);
     return () => clearInterval(timer);
-  }, [timeLeft, showResults]);
+  }, [timeLeft]);
 
   const handleAnswer = (questionId: number, optionIndex: number) => {
     setAnswers({ ...answers, [questionId]: optionIndex });
@@ -69,61 +70,16 @@ export default function MentalAbilityTest() {
     return scores;
   };
 
-  if (showResults) {
+  const handleFinish = () => {
     const scores = calculateScore();
-    const totalCorrect = Object.values(scores).reduce((acc, s) => acc + s.correct, 0);
-    const totalQuestions = abilityQuestions.length;
-
-    return (
-      <div className="max-w-4xl mx-auto p-6 animate-fade-in font-arabic">
-        <div className="glass-morphism rounded-[2.5rem] shadow-xl border border-white/40 p-8">
-          <div className="text-center mb-10">
-            <div className="w-16 h-16 bg-primary-100  text-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4 font-black">
-              <BarChart3 size={32} />
-            </div>
-            <h2 className="text-4xl font-black text-primary-950  mb-2">نتائج اختبار القدرات العقلية</h2>
-            <p className="text-slate-700  font-bold">تحليل مفصل لقدراتك الذهنية بناءً على أدائك</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {Object.entries(scores).map(([type, { correct, total }]) => (
-              <div key={type} className="p-6 rounded-2xl bg-slate-50  border border-slate-100 ">
-                <div className="flex justify-between items-center mb-4">
-                  <h4 className="font-bold text-slate-900 ">
-                    {type === 'L' && 'القدرة اللغوية'}
-                    {type === 'M' && 'القدرة المنطقية/الرياضية'}
-                    {type === 'S' && 'القدرة المكانية'}
-                    {type === 'Mem' && 'قوة الذاكرة'}
-                  </h4>
-                  <span className="text-primary-600 font-bold">{Math.round((correct / total) * 100)}%</span>
-                </div>
-                <div className="h-2 bg-slate-200  rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(correct / total) * 100}%` }}
-                    className="h-full bg-primary-600"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <div className="inline-block p-4 bg-slate-50  rounded-2xl border border-slate-100 ">
-              <span className="text-slate-500 text-sm">النتيجة الإجمالية</span>
-              <div className="text-4xl font-bold text-primary-600 mt-1">{totalCorrect} / {totalQuestions}</div>
-            </div>
-            <button 
-              onClick={() => window.location.href = '/assessments'}
-              className="block w-full mt-8 py-4 bg-primary-600 text-white font-bold rounded-2xl hover:bg-primary-700 transition-all"
-            >
-              العودة للوحة المقاييس
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+    const topAbilities = Object.entries(scores)
+      .sort(([, a], [, b]) => (b.correct / b.total) - (a.correct / a.total))
+      .slice(0, 3)
+      .map(([type]) => type);
+    
+    localStorage.setItem('user_abilities', JSON.stringify(topAbilities));
+    router.push('/dashboard');
+  };
 
   const q = abilityQuestions[currentPage];
 
@@ -197,7 +153,7 @@ export default function MentalAbilityTest() {
 
           {currentPage === abilityQuestions.length - 1 ? (
             <button
-              onClick={() => setShowResults(true)}
+              onClick={handleFinish}
               className="flex items-center gap-2 px-8 py-3 bg-primary-600 text-white font-bold rounded-xl shadow-lg shadow-primary-600/20 hover:bg-primary-700 transition-all"
             >
               إنهاء الاختبار
