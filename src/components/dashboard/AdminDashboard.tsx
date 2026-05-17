@@ -30,7 +30,7 @@ export default function AdminDashboard({ setActiveTab }: { setActiveTab?: (tab: 
   }, []);
 
   const stats = [
-    { label: "إجمالي الطلاب", value: "1,240", icon: <Users size={20} />, color: "bg-blue-500", trend: "+12%" },
+    { label: "إجمالي التلاميذ", value: "1,240", icon: <Users size={20} />, color: "bg-blue-500", trend: "+12%" },
     { label: "الاختبارات المنفذة", value: "3,850", icon: <BookOpen size={20} />, color: "bg-purple-500", trend: "+8%" },
     { label: "دقة التوجيه", value: "94%", icon: <Activity size={20} />, color: "bg-green-500", trend: "+4%" },
     { label: "الميول المهنية", value: "واقعية (R)", icon: <TrendingUp size={20} />, color: "bg-orange-500", trend: "نمط غالب" },
@@ -84,7 +84,7 @@ export default function AdminDashboard({ setActiveTab }: { setActiveTab?: (tab: 
           <div className="flex items-center justify-between mb-8">
              <h3 className="text-lg font-bold text-primary-950 flex items-center gap-2">
                 <PieChart size={18} className="text-primary-600" />
-                توزيع الميول المهنية (نظرة سريعة)
+                توزيع الميول المهنية للتلاميذ
              </h3>
              <button 
                onClick={() => setActiveTab && setActiveTab('analytics')}
@@ -111,6 +111,18 @@ export default function AdminDashboard({ setActiveTab }: { setActiveTab?: (tab: 
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
+          </div>
+          
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
+             {hollandSummary.map((item, i) => {
+               const labels: Record<string, string> = { R: 'واقعي', I: 'بحثي', A: 'فني', S: 'اجتماعي', E: 'مبادر', C: 'تقليدي' };
+               return (
+                 <div key={i} className="flex items-center gap-1.5">
+                   <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: COLORS[i % COLORS.length] }}></div>
+                   <span className="text-xs font-bold text-slate-600">{item.name} ({labels[item.name]})</span>
+                 </div>
+               );
+             })}
           </div>
         </div>
 

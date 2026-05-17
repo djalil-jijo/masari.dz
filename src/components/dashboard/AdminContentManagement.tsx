@@ -22,6 +22,7 @@ const initialContentItems = [
   { id: 2, title: "أهمية مقياس هولاند في التوجيه", category: "أدلة مهنية", date: "2024-04-08", status: "Published", author: "أ. سارة", views: 856 },
   { id: 3, title: "إعلان: فتح باب التسجيل للمقياس الجماعي", category: "إعلانات", date: "2024-04-12", status: "Draft", author: "المدير", views: 0 },
   { id: 4, title: "فهم السمات الشخصية الخمس الكبرى", category: "مقالات", date: "2024-04-05", status: "Published", author: "د. كريم", views: 2100 },
+  { id: 5, title: "كيف تختار تخصصك المهني؟", category: "مقالات", date: "2024-04-15", status: "Published", author: "د. أحمد", views: 520 },
 ];
 
 export default function AdminContentManagement() {
@@ -36,7 +37,7 @@ export default function AdminContentManagement() {
   const [formCategory, setFormCategory] = useState('مقالات');
 
   useEffect(() => {
-    const saved = localStorage.getItem('admin_content_items');
+    const saved = localStorage.getItem('admin_content_items_v2');
     if (saved) {
       try {
         setItems(JSON.parse(saved));
@@ -47,7 +48,7 @@ export default function AdminContentManagement() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('admin_content_items', JSON.stringify(items));
+    localStorage.setItem('admin_content_items_v2', JSON.stringify(items));
   }, [items]);
 
   const filteredItems = items.filter(item => filter === 'All' || filter === 'الكل' || item.category === filter);

@@ -6,7 +6,7 @@ import { Settings, Bell, Shield, Eye, Globe, Moon, HelpCircle } from 'lucide-rea
 export default function CounselorSettings() {
   const [notifications, setNotifications] = useState([
     { id: 1, label: "إشعارات البريد الإلكتروني", desc: "استلام تقارير دورية وتنبيهات الجلسات", active: true },
-    { id: 2, label: "تنبيهات النظام", desc: "إشعارات فورية عند تسجيل طالب جديد أو إتمام اختبار", active: true },
+    { id: 2, label: "تنبيهات النظام", desc: "إشعارات فورية عند تسجيل تلميذ جديد أو إتمام اختبار", active: true },
     { id: 3, label: "إشعارات الرسائل", desc: "تنبيه عند استلام رسالة جديدة من المستفيدين", active: false },
   ]);
   const [darkMode, setDarkMode] = useState(false);

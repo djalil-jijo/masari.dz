@@ -80,7 +80,7 @@ export default function AdminSystemSettings() {
                     </div>
                     <div className="flex-1">
                        <h4 className="font-bold text-amber-900  mb-1">تفعيل وضع الصيانة</h4>
-                       <p className="text-sm text-amber-700  mb-4 leading-relaxed">عند تفعيل وضع الصيانة، لن يتمكن الطلاب أو المستشارون من الدخول للنظام. ستظهر لهم صفحة تخبرهم بالصيانة المجدولة.</p>
+                       <p className="text-sm text-amber-700  mb-4 leading-relaxed">عند تفعيل وضع الصيانة، لن يتمكن التلاميذ أو المستشارون من الدخول للنظام. ستظهر لهم صفحة تخبرهم بالصيانة المجدولة.</p>
                        <label className="relative inline-flex items-center cursor-pointer">
                           <input type="checkbox" className="sr-only peer" />
                           <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>

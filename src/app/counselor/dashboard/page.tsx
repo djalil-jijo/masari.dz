@@ -37,12 +37,9 @@ export default function CounselorDashboardPage() {
       <aside className={`fixed inset-y-0 right-0 z-50 w-72 glass-morphism border-l border-white/20 transform transition-transform duration-300 lg:relative lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}`}>
         <div className="p-6 border-b border-slate-100  flex items-center justify-between">
            <Link href="/" className="flex items-center gap-3">
-             <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary-600/30">
-               <Compass size={24} />
-             </div>
-             <div className="flex flex-col">
-               <span className="text-xl font-bold text-slate-900 ">مساري</span>
-               <span className="text-[10px] text-indigo-500 font-bold uppercase tracking-wider">لوحة المستشار</span>
+             <img src="/logo.jpg" alt="مساري" className="h-10 w-auto mix-blend-multiply" />
+             <div className="flex flex-col justify-center">
+               <span className="text-[10px] text-indigo-500 font-bold uppercase tracking-wider mt-1">لوحة المستشار</span>
              </div>
            </Link>
            <button onClick={() => setIsSidebarOpen(false)} className="p-2 text-slate-500 hover:text-red-500 lg:hidden focus:ring-2 focus:ring-red-500/20 rounded-lg outline-none">
@@ -56,7 +53,7 @@ export default function CounselorDashboardPage() {
              { id: 'assessments', label: 'المقاييس النفسية والمهنية', icon: <ClipboardList size={18} /> },
              { id: 'beneficiaries', label: 'إدارة المستفيدين', icon: <Users size={18} /> },
              { id: 'sessions', label: 'الجلسات والاستشارات', icon: <Calendar size={18} /> },
-             { id: 'student-files', label: 'ملفات الطلاب', icon: <FileText size={18} /> },
+             { id: 'student-files', label: 'ملفات التلاميذ', icon: <FileText size={18} /> },
              { id: 'messages', label: 'الرسائل والتواصل', icon: <MessageSquare size={18} /> },
              { id: 'monitoring', label: 'لوحة المراقبة والإحصاء', icon: <BarChart3 size={18} /> },
              { id: 'settings', label: 'الإعدادات', icon: <Settings size={18} /> },
@@ -101,7 +98,7 @@ export default function CounselorDashboardPage() {
                 {activeTab === 'assessments' && "المقاييس النفسية والمهنية"}
                 {activeTab === 'beneficiaries' && "إدارة المستفيدين"}
                 {activeTab === 'sessions' && "الجلسات والاستشارات"}
-                {activeTab === 'student-files' && "ملفات الطلاب"}
+                {activeTab === 'student-files' && "ملفات التلاميذ"}
                 {activeTab === 'messages' && "الرسائل والتواصل"}
                 {activeTab === 'monitoring' && "لوحة المراقبة والإحصاء"}
                 {activeTab === 'settings' && "الإعدادات"}

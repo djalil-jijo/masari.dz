@@ -93,15 +93,15 @@ export default function DataAnalytics() {
             <div className="p-2 bg-primary-100 text-primary-600 rounded-xl">
               <TrendingUp size={24} />
             </div>
-            <h2 className="text-3xl font-black text-primary-950">تحليلات ذكاء الأعمال للطلبة</h2>
+            <h2 className="text-3xl font-black text-primary-950">تحليلات ذكاء الأعمال للتلاميذ</h2>
           </div>
           <p className="text-slate-700 font-bold max-w-2xl">
-            نظام تحليل متقدم يعتمد على البيانات الضخمة (Big Data Simulation) لتقديم رؤى دقيقة حول توجهات الطلاب وقدراتهم الكامنة.
+            نظام تحليل متقدم يعتمد على البيانات الضخمة (Big Data Simulation) لتقديم رؤى دقيقة حول توجهات التلاميذ وقدراتهم الكامنة.
           </p>
         </div>
         <div className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-2xl shadow-lg shadow-primary-600/20 font-bold text-sm">
           <Users size={18} />
-          <span>عينة: {data.length} طالب</span>
+          <span>عينة: {data.length} تلميذ</span>
         </div>
       </div>
 
@@ -227,7 +227,7 @@ export default function DataAnalytics() {
         {/* Personality Radar Chart */}
         <div className="lg:col-span-1 glass-morphism rounded-[2.5rem] p-8 border border-white/40 shadow-sm min-h-[400px] flex flex-col">
           <h3 className="text-xl font-black text-primary-950 mb-2">توازن السمات الشخصية</h3>
-          <p className="text-xs font-bold text-slate-500 mb-8">متوسط الدرجات المعيارية للطلبة</p>
+          <p className="text-xs font-bold text-slate-500 mb-8">متوسط الدرجات المعيارية للتلاميذ</p>
           
           <div className="h-[300px] w-full flex-1">
             <ResponsiveContainer width="100%" height="100%">
@@ -261,7 +261,7 @@ export default function DataAnalytics() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h3 className="text-xl font-black text-primary-950">نمو مؤشرات الأداء</h3>
-              <p className="text-xs font-bold text-slate-500 mt-1">تحليل زمني لمحاكاة تفاعل الطلاب مع الاختبارات</p>
+              <p className="text-xs font-bold text-slate-500 mt-1">تحليل زمني لمحاكاة تفاعل التلاميذ مع الاختبارات</p>
             </div>
           </div>
           <div className="h-[300px] w-full">

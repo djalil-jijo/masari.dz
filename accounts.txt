@@ -1,0 +1,13 @@
+حسابات الدخول التجريبية (Demo Accounts) لمنصة مساري
+
+1. حساب مدير النظام (Admin Dashboard):
+   البريد الإلكتروني: admin@masari.com
+   كلمة المرور: admin123
+
+2. حساب المستشار التربوي (Counselor Dashboard):
+   البريد الإلكتروني: counselor@masari.com
+   كلمة المرور: counselor123
+
+3. حساب الطالب (Student Dashboard):
+   البريد الإلكتروني: student@masari.com
+   كلمة المرور: student123

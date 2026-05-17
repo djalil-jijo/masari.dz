@@ -40,12 +40,9 @@ export default function AdminPage() {
       <aside className={`fixed inset-y-0 right-0 z-50 w-72 glass-morphism border-l border-white/20 transform transition-transform duration-300 lg:relative lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}`}>
         <div className="p-6 border-b border-slate-100  flex items-center justify-between">
            <Link href="/" className="flex items-center gap-3">
-             <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary-600/30">
-               <Compass size={24} />
-             </div>
-             <div className="flex flex-col">
-                <span className="text-xl font-bold text-slate-900">مساري</span>
-                <span className="text-[10px] text-primary-600 font-bold uppercase tracking-wider">لوحة الإدارة</span>
+             <img src="/logo.jpg" alt="مساري" className="h-10 w-auto mix-blend-multiply" />
+             <div className="flex flex-col justify-center">
+                <span className="text-[10px] text-primary-600 font-bold uppercase tracking-wider mt-1">لوحة الإدارة</span>
              </div>
            </Link>
            <button onClick={() => setIsSidebarOpen(false)} className="p-2 text-slate-500 hover:text-red-500 lg:hidden focus:ring-2 focus:ring-red-500/20 rounded-lg outline-none">
@@ -56,7 +53,7 @@ export default function AdminPage() {
         <nav className="flex-1 p-4 space-y-1.5 overflow-y-auto mt-4">
            {[
              { id: 'monitoring', label: 'لوحة المراقبة والإحصاء', icon: <BarChart3 size={18} /> },
-             { id: 'analytics', label: 'تحليلات بيانات الطلبة', icon: <TrendingUp size={18} /> },
+             { id: 'analytics', label: 'تحليلات بيانات التلاميذ', icon: <TrendingUp size={18} /> },
              { id: 'users', label: 'إدارة المستخدمين والمهام', icon: <Users size={18} /> },
              { id: 'assessments', label: 'إدارة المقاييس', icon: <ClipboardList size={18} /> },
              { id: 'content', label: 'إدارة المحتوى والإعلانات', icon: <FileText size={18} /> },
@@ -100,7 +97,7 @@ export default function AdminPage() {
               </button>
               <h2 className="text-sm md:text-lg font-bold text-slate-900">
                 {activeTab === 'monitoring' && "لوحة المراقبة والإحصاء"}
-                {activeTab === 'analytics' && "تحليلات بيانات الطلبة"}
+                {activeTab === 'analytics' && "تحليلات بيانات التلاميذ"}
                 {activeTab === 'users' && "إدارة المستخدمين والمهام"}
                 {activeTab === 'assessments' && "إدارة المقاييس والتخصصات"}
                 {activeTab === 'content' && "إدارة المحتوى والمقالات"}

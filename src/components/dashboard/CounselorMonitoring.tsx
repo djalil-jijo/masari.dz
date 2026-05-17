@@ -11,7 +11,7 @@ export default function CounselorMonitoring() {
     { label: "المستفيدين النشطين", value: "145", icon: <Users size={20} />, color: "bg-blue-500", trend: "+12%" },
     { label: "جلسات هذا الأسبوع", value: "24", icon: <Calendar size={20} />, color: "bg-purple-500", trend: "+5%" },
     { label: "مقاييس مكتملة", value: "89", icon: <CheckCircle size={20} />, color: "bg-green-500", trend: "+18%" },
-    { label: "تفاعل الطلاب", value: "92%", icon: <Activity size={20} />, color: "bg-orange-500", trend: "+2%" },
+    { label: "تفاعل التلاميذ", value: "92%", icon: <Activity size={20} />, color: "bg-orange-500", trend: "+2%" },
   ];
 
   const recentActivities = [
@@ -33,7 +33,7 @@ export default function CounselorMonitoring() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-primary-950">لوحة المراقبة والإحصاء</h1>
-          <p className="text-slate-700 font-medium mt-1">نظرة عامة على نشاطات طلابك ومهامك الإرشادية المنجزة</p>
+          <p className="text-slate-700 font-medium mt-1">نظرة عامة على نشاطات تلاميذك ومهامك الإرشادية المنجزة</p>
         </div>
         <div className="flex bg-white/60 p-1 rounded-xl glass-morphism border border-indigo-100/30 w-fit">
            <button onClick={() => setTimeFilter('today')} className={`px-4 py-2 text-xs font-bold rounded-lg transition-colors ${timeFilter === 'today' ? 'bg-primary-600 text-white shadow-md' : 'text-primary-900 hover:text-primary-600'}`}>اليوم</button>

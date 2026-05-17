@@ -59,8 +59,7 @@ export default function StudentDashboard() {
       <aside className="w-64 glass-morphism border-l border-white/20 hidden lg:flex flex-col">
         <div className="p-6 border-b border-slate-100 ">
            <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold italic shadow-lg shadow-primary-600/30">M</div>
-             <span className="text-xl font-bold text-slate-800 ">مساري</span>
+             <img src="/logo.jpg" alt="مساري" className="h-10 w-auto mix-blend-multiply" />
            </Link>
         </div>
         
@@ -110,7 +109,7 @@ export default function StudentDashboard() {
               >
                 <Menu size={24} />
               </button>
-              <h2 className="text-lg font-bold text-slate-800 ">لوحة تحكم الطالب</h2>
+              <h2 className="text-lg font-bold text-slate-800 ">لوحة تحكم التلميذ</h2>
            </div>
            <div className="flex items-center gap-4">
               <button className="p-2 text-slate-500 hover:text-primary-600 relative">

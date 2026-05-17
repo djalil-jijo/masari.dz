@@ -129,9 +129,9 @@ export default function CounselorSessions() {
              </div>
              <div className="space-y-4 font-arabic">
                 <div>
-                   <label className="block text-sm font-bold text-slate-700 mb-2">الطالب أو المستفيد</label>
+                   <label className="block text-sm font-bold text-slate-700 mb-2">التلميذ أو المستفيد</label>
                    <select className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm">
-                      <option>اختر الطالب...</option>
+                      <option>اختر التلميذ...</option>
                       <option>أحمد بن محمد</option>
                       <option>سارة العلي</option>
                    </select>

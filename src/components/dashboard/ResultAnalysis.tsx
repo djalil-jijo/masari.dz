@@ -11,7 +11,7 @@ export default function ResultAnalysis() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-slate-900 ">تحليل وتفريغ النتائج</h2>
-          <p className="text-slate-500  text-sm">إحصائيات متقدمة حول الميول المهنية والقدرات العقلية للطلاب</p>
+          <p className="text-slate-500  text-sm">إحصائيات متقدمة حول الميول المهنية والقدرات العقلية للتلاميذ</p>
         </div>
         <div className="flex items-center gap-3">
           <button onClick={() => alert('تم بدء التصدير')} className="flex items-center gap-2 px-4 py-2.5 bg-primary-600 text-white rounded-xl font-bold text-xs shadow-lg shadow-primary-600/20 hover:bg-primary-700 transition-all">

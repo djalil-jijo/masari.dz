@@ -32,7 +32,7 @@ export default function MessagesView() {
                 <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500" />
                 <input 
                   type="text" 
-                  placeholder="بحث عن طالب..."
+                  placeholder="بحث عن تلميذ..."
                   className="w-full pr-10 pl-4 py-2 glass-morphism border border-indigo-100/10  rounded-xl text-xs font-bold text-slate-900  focus:ring-2 focus:ring-indigo-600/20 outline-none"
                 />
              </div>

@@ -26,14 +26,7 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           {" "}
           <div className="flex items-center gap-2">
-            {" "}
-            <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary-600/30">
-              {" "}
-              <Compass size={24} />{" "}
-            </div>{" "}
-            <span className="text-xl font-bold tracking-tight text-primary-900 ">
-              مساري
-            </span>{" "}
+            <img src="/logo.jpg" alt="مساري" className="h-12 w-auto mix-blend-multiply" />
           </div>{" "}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-800 ">
             {" "}
@@ -391,7 +384,7 @@ export default function LandingPage() {
                 {
                   step: "2",
                   title: "تطبيق المقاييس",
-                  desc: "من طرف المستشار أو الأخصائي أو المستخدم",
+                  desc: "من طرف المستشار أو الأخصائي ",
                 },
                 {
                   step: "3",
@@ -440,7 +433,7 @@ export default function LandingPage() {
                 <p className="text-lg text-slate-900 mb-8 leading-relaxed font-medium">
                   {" "}
                   نظام موجه للإدارة العليا من أجل تبويب وترتيب وتحليل البيانات
-                  المرصودة قراءة إحصائية دقيقة، مما يساعد في التخطيط المستقبلي
+                  المرصودة مع قراءة إحصائية دقيقة، مما يساعد في التخطيط المستقبلي
                   وبناء قاعدة بيانات بحثية قوية.{" "}
                 </p>{" "}
                 <div className="grid grid-cols-2 gap-6">
@@ -451,7 +444,7 @@ export default function LandingPage() {
                       +10,000
                     </div>{" "}
                     <div className="text-sm font-bold text-slate-900 ">
-                      طالب مسجل
+                      تلميذ مسجل
                     </div>{" "}
                   </div>{" "}
                   <div className="p-6 rounded-2xl glass-morphism border border-indigo-100/20">
@@ -566,7 +559,7 @@ export default function LandingPage() {
                 },
                 {
                   q: "هل يمكن للمؤسسات التعليمية استخدام المنصة؟",
-                  a: "نعم، توفر المنصة لوحات تحكم متقدمة للمدارس والجامعات لمتابعة أداء الطلاب بشكل جماعي.",
+                  a: "نعم، توفر المنصة لوحات تحكم متقدمة للمدارس والجامعات لمتابعة أداء التلاميذ بشكل جماعي.",
                 },
                 {
                   q: "كيف أحصل على التقرير النهائي؟",
@@ -601,14 +594,7 @@ export default function LandingPage() {
             <div className="col-span-1 md:col-span-1 text-right">
               {" "}
               <div className="flex items-center gap-2 mb-6">
-                {" "}
-                <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                  {" "}
-                  <Compass size={24} />{" "}
-                </div>{" "}
-                <span className="text-2xl font-bold tracking-tight text-black ">
-                  مساري
-                </span>{" "}
+                <img src="/logo.jpg" alt="مساري" className="h-14 w-auto mix-blend-multiply" />
               </div>{" "}
               <p className="text-slate-900 text-sm leading-relaxed font-medium">
                 نساعدك على رسم مستقبلك بخطوات واثقة ومدروسة عبر أحدث المقاييس

@@ -10,7 +10,7 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
 
 export const metadata: Metadata = {
   title: "نظام الإرشاد المهني والنفسي",
-  description: "منصة متطورة لتحليل القدرات العقلية والميول المهنية للطلاب",
+  description: "منصة متطورة لتحليل القدرات العقلية والميول المهنية للتلاميذ",
 };
 
 export default function RootLayout({

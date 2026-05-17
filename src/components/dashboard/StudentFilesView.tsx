@@ -19,7 +19,7 @@ export default function StudentFilesView() {
     <div className="max-w-6xl mx-auto p-6 font-arabic animate-fade-in">
       <div className="flex items-center justify-between mb-10">
         <div>
-          <h1 className="text-3xl font-bold text-primary-950 ">ملفات الطلاب</h1>
+          <h1 className="text-3xl font-bold text-primary-950 ">ملفات التلاميذ</h1>
           <p className="text-slate-700  font-medium mb-4">إدارة الوثائق والتقارير الخاصة بالمستفيدين</p>
           <button onClick={() => setIsUploadModalOpen(true)} className="flex items-center gap-2 px-5 py-2.5 bg-primary-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-primary-600/20 hover:bg-primary-700 transition-all hover:-translate-y-0.5">
              <Upload size={18} />
@@ -30,7 +30,7 @@ export default function StudentFilesView() {
            <Search size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500" />
             <input 
               type="text" 
-              placeholder="بحث عن ملف أو طالب..."
+              placeholder="بحث عن ملف أو تلميذ..."
               className="w-80 pr-12 pl-4 py-2.5 glass-morphism border border-indigo-100/20  rounded-2xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-primary-600/20 focus:border-primary-600 transition-all text-primary-950 "
             />
         </div>
@@ -65,7 +65,7 @@ export default function StudentFilesView() {
             <thead>
               <tr className="bg-indigo-50/30  text-slate-600  text-[10px] font-bold uppercase tracking-wider">
                 <th className="px-6 py-4">اسم الملف</th>
-                <th className="px-6 py-4">الطالب</th>
+                <th className="px-6 py-4">التلميذ</th>
                 <th className="px-6 py-4 text-center">النوع</th>
                 <th className="px-6 py-4 text-center">الحجم</th>
                 <th className="px-6 py-4 text-center">التاريخ</th>
@@ -154,9 +154,9 @@ export default function StudentFilesView() {
              </div>
              <div className="space-y-4 font-arabic">
                 <div>
-                   <label className="block text-sm font-bold text-slate-700 mb-2">الطالب المعني</label>
+                   <label className="block text-sm font-bold text-slate-700 mb-2">التلميذ المعني</label>
                    <select className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm">
-                      <option>اختر الطالب...</option>
+                      <option>اختر التلميذ...</option>
                       <option>أحمد بن محمد</option>
                       <option>سارة العلي</option>
                    </select>

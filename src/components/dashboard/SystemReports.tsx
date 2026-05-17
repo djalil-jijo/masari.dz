@@ -114,7 +114,7 @@ export default function SystemReports() {
                    <div className="flex items-center gap-2 text-xs">
                       <span className="font-bold text-indigo-600">{log.user}</span>
                       <span className="text-slate-600 ">•</span>
-                      <span className="text-slate-500">{log.role === 'ADMIN' ? 'مدير' : log.role === 'COUNSELOR' ? 'مستشار' : 'طالب'}</span>
+                      <span className="text-slate-500">{log.role === 'ADMIN' ? 'مدير' : log.role === 'COUNSELOR' ? 'مستشار' : 'تلميذ'}</span>
                    </div>
                 </div>
              </motion.div>

@@ -37,10 +37,7 @@ export default function LoginPage() {
       {/* Header */}
       <header className="p-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary-600/30">
-            <Compass size={24} />
-          </div>
-          <span className="text-xl font-bold text-primary-900">مساري</span>
+          <img src="/logo.jpg" alt="مساري" className="h-12 w-auto mix-blend-multiply" />
         </Link>
         <Link href="/" className="text-sm font-bold text-primary-700 hover:text-primary-600 transition-colors flex items-center gap-1">
           <ArrowRight size={16} />

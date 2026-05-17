@@ -104,7 +104,7 @@ export default function CounselorProfile() {
             <div className="mt-8 space-y-1">
               <label className="text-xs font-bold text-slate-700  uppercase">نبذة تعريفية</label>
               <div className="p-4 glass-morphism border border-indigo-100/10 rounded-xl text-primary-950  leading-relaxed font-medium">
-                مستشار متخصص في التوجيه الأكاديمي والمهني، بخبرة تزيد عن 10 سنوات في مساعدة الطلاب على اكتشاف شغفهم ورسم مساراتهم المستقبلية بناءً على المعايير العلمية.
+                مستشار متخصص في التوجيه الأكاديمي والمهني، بخبرة تزيد عن 10 سنوات في مساعدة التلاميذ على اكتشاف شغفهم ورسم مساراتهم المستقبلية بناءً على المعايير العلمية.
               </div>
             </div>
           </div>

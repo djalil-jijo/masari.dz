@@ -75,7 +75,7 @@ export default function AdminUserManagement() {
     switch(role) {
       case 'ADMIN': return <span className="flex items-center gap-1 px-2.5 py-1 bg-red-50 text-red-600 rounded-lg text-xs font-bold border border-red-100"><Shield size={12}/> مدير</span>;
       case 'COUNSELOR': return <span className="flex items-center gap-1 px-2.5 py-1 bg-primary-50 text-primary-600 rounded-lg text-xs font-bold border border-primary-100"><UserIcon size={12}/> مستشار</span>;
-      case 'STUDENT': return <span className="flex items-center gap-1 px-2.5 py-1 bg-secondary-50 text-secondary-600 rounded-lg text-xs font-bold border border-secondary-100"><GraduationCap size={12}/> طالب</span>;
+      case 'STUDENT': return <span className="flex items-center gap-1 px-2.5 py-1 bg-secondary-50 text-secondary-600 rounded-lg text-xs font-bold border border-secondary-100"><GraduationCap size={12}/> تلميذ</span>;
     }
   };
 
@@ -103,7 +103,7 @@ export default function AdminUserManagement() {
                <option value="ALL">جميع الصلاحيات</option>
                <option value="ADMIN">المديرين</option>
                <option value="COUNSELOR">المستشارين</option>
-               <option value="STUDENT">الطلاب</option>
+               <option value="STUDENT">التلاميذ</option>
              </select>
              <Filter className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={16} />
           </div>
@@ -265,7 +265,7 @@ export default function AdminUserManagement() {
                 >
                   <option value="ADMIN">مدير نظام</option>
                   <option value="COUNSELOR">مستشار تربوي</option>
-                  <option value="STUDENT">طالب</option>
+                  <option value="STUDENT">تلميذ</option>
                 </select>
               </div>
 
@@ -336,7 +336,7 @@ export default function AdminUserManagement() {
                 >
                   <option value="ADMIN">مدير نظام</option>
                   <option value="COUNSELOR">مستشار تربوي</option>
-                  <option value="STUDENT">طالب</option>
+                  <option value="STUDENT">تلميذ</option>
                 </select>
               </div>
 

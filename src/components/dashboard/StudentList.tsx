@@ -20,15 +20,15 @@ export default function StudentList() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 ">إدارة الطلاب</h2>
-          <p className="text-slate-500  text-sm">متابعة أداء الطلاب ونتائج مقاييسهم</p>
+          <h2 className="text-2xl font-bold text-slate-900 ">إدارة التلاميذ</h2>
+          <p className="text-slate-500  text-sm">متابعة أداء التلاميذ ونتائج مقاييسهم</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="relative">
             <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
             <input 
               type="text" 
-              placeholder="البحث عن طالب..."
+              placeholder="البحث عن تلميذ..."
               className="pr-10 pl-4 py-2.5 rounded-xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 transition-all text-sm w-64 shadow-sm text-primary-950 font-bold"
             />
           </div>
@@ -43,7 +43,7 @@ export default function StudentList() {
           <table className="w-full text-right border-collapse">
             <thead>
               <tr className="bg-white/60  text-slate-700 text-xs font-bold uppercase tracking-wider">
-                <th className="px-6 py-4">الطالب</th>
+                <th className="px-6 py-4">التلميذ</th>
                 <th className="px-6 py-4">المرحلة</th>
                 <th className="px-6 py-4">حالة المقاييس</th>
                 <th className="px-6 py-4">أعلى ميل</th>
@@ -102,7 +102,7 @@ export default function StudentList() {
           </table>
         </div>
         <div className="p-6 border-t border-indigo-100/10 flex items-center justify-between text-xs font-bold">
-          <span className="text-slate-600">عرض 5 من أصل 1,240 طالب</span>
+          <span className="text-slate-600">عرض 5 من أصل 1,240 تلميذ</span>
           <div className="flex items-center gap-2">
              <button onClick={() => alert('الصفحة السابقة')} className="px-3 py-1 rounded border border-slate-200 text-slate-500">السابق</button>
              <button className="px-3 py-1 rounded bg-primary-600 text-white">1</button>
@@ -115,7 +115,7 @@ export default function StudentList() {
       {isViewModalOpen && selectedStudent && (
         <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="glass-morphism w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl border border-white/40 p-6 text-right">
-             <h3 className="text-xl font-bold text-slate-900 mb-2">تفاصيل الطالب</h3>
+             <h3 className="text-xl font-bold text-slate-900 mb-2">تفاصيل التلميذ</h3>
              <div className="p-4 bg-slate-50 rounded-xl font-medium text-sm space-y-2 mb-6">
                <p><span className="font-bold">الاسم:</span> {selectedStudent.name}</p>
                <p><span className="font-bold">البريد:</span> {selectedStudent.email}</p>
