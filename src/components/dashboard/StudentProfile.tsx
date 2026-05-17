@@ -17,15 +17,15 @@ export default function StudentProfile() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6">
+      <div className="flex items-center justify-between gap-4 border-b border-slate-100  pb-6">
         <div>
-          <h2 className="text-3xl font-bold text-primary-950 dark:text-white mb-2">الملف الشخصي</h2>
-          <p className="text-slate-700 dark:text-slate-300 font-medium">إدارة معلوماتك الأكاديمية وطموحاتك المستقبلية</p>
+          <h2 className="text-3xl font-bold text-primary-950  mb-2">الملف الشخصي</h2>
+          <p className="text-slate-700  font-medium">إدارة معلوماتك الأكاديمية وطموحاتك المستقبلية</p>
         </div>
         <button 
           onClick={() => setIsEditing(!isEditing)}
           className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg
-            ${isEditing ? 'bg-green-600 text-white shadow-green-600/20' : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white shadow-slate-100/20'}`}
+            ${isEditing ? 'bg-green-600 text-white shadow-green-600/20' : 'bg-slate-100  text-slate-900  shadow-slate-100/20'}`}
         >
           {isEditing ? <Save size={18} /> : <Edit3 size={18} />}
           <span>{isEditing ? 'حفظ التعديلات' : 'تعديل الملف'}</span>
@@ -38,15 +38,15 @@ export default function StudentProfile() {
           <div className="glass-morphism rounded-3xl p-8 border border-white/40 shadow-sm text-center relative overflow-hidden">
             <div className="relative z-10">
               <div className="relative w-32 h-32 mx-auto mb-6 group">
-                <div className="w-full h-full bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-4xl font-bold text-slate-500 shadow-inner">
+                <div className="w-full h-full bg-slate-200  rounded-full flex items-center justify-center text-4xl font-bold text-slate-500 shadow-inner">
                   {profile.name[0]}
                 </div>
                 <button className="absolute bottom-0 right-0 p-2 bg-primary-600 text-white rounded-full shadow-lg hover:scale-110 transition-transform opacity-0 group-hover:opacity-100">
                   <Camera size={16} />
                 </button>
               </div>
-              <h3 className="text-2xl font-bold text-primary-950 dark:text-white mb-1">{profile.name}</h3>
-              <p className="text-slate-700 dark:text-slate-300 font-bold text-sm mb-6">{profile.grade}</p>
+              <h3 className="text-2xl font-bold text-primary-950  mb-1">{profile.name}</h3>
+              <p className="text-slate-700  font-bold text-sm mb-6">{profile.grade}</p>
               
               <div className="flex justify-center gap-4 py-4 border-y border-indigo-100/10">
                 <div className="text-center px-4 border-l border-indigo-100/10 last:border-0">
@@ -67,18 +67,18 @@ export default function StudentProfile() {
           </div>
 
           <div className="glass-morphism rounded-3xl p-6 border border-white/40 shadow-sm">
-            <h4 className="font-bold text-primary-950 dark:text-white mb-4 flex items-center gap-2">
+            <h4 className="font-bold text-primary-950  mb-4 flex items-center gap-2">
               <Award className="text-primary-600" size={18} />
               الأوسمة المحصلة
             </h4>
             <div className="flex flex-wrap gap-3">
-              <div title="مكتشف ذاته" className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl flex items-center justify-center">
+              <div title="مكتشف ذاته" className="w-10 h-10 bg-blue-100  text-blue-600 rounded-xl flex items-center justify-center">
                 <Star size={18} />
               </div>
-              <div title="قادر على التحليل" className="w-10 h-10 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-xl flex items-center justify-center">
+              <div title="قادر على التحليل" className="w-10 h-10 bg-green-100  text-green-600 rounded-xl flex items-center justify-center">
                 <Target size={18} />
               </div>
-              <div title="متفاعل بإيجابية" className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-xl flex items-center justify-center">
+              <div title="متفاعل بإيجابية" className="w-10 h-10 bg-purple-100  text-purple-600 rounded-xl flex items-center justify-center">
                 <Star size={18} />
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function StudentProfile() {
                 { label: "الهدف المهني المخطط له", value: profile.goal, icon: <Star size={18} />, key: "goal" },
               ].map((field, i) => (
                 <div key={i} className="space-y-2">
-                  <label className="text-xs font-bold text-slate-700 dark:text-slate-400 flex items-center gap-2">
+                  <label className="text-xs font-bold text-slate-700  flex items-center gap-2">
                     <span className="text-primary-600">{field.icon}</span>
                     {field.label}
                   </label>
@@ -107,10 +107,10 @@ export default function StudentProfile() {
                       type="text" 
                       value={field.value} 
                       onChange={(e) => setProfile({...profile, [field.key]: e.target.value})}
-                      className="w-full bg-slate-50 dark:bg-slate-800 px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 outline-none focus:border-primary-600 transition-all font-bold text-slate-700 dark:text-slate-200"
+                      className="w-full bg-slate-50  px-4 py-3 rounded-xl border border-slate-200  outline-none focus:border-primary-600 transition-all font-bold text-slate-700 "
                     />
                   ) : (
-                    <div className="text-lg font-bold text-primary-950 dark:text-white px-1">
+                    <div className="text-lg font-bold text-primary-950  px-1">
                       {field.value}
                     </div>
                   )}
@@ -119,13 +119,13 @@ export default function StudentProfile() {
             </div>
           </div>
 
-          <div className="bg-amber-50 dark:bg-amber-900/20 rounded-3xl p-6 border border-amber-100 dark:border-amber-800 flex items-start gap-4">
-            <div className="w-10 h-10 bg-amber-100 dark:bg-amber-900/40 text-amber-600 rounded-xl flex items-center justify-center shrink-0">
+          <div className="bg-amber-50  rounded-3xl p-6 border border-amber-100  flex items-start gap-4">
+            <div className="w-10 h-10 bg-amber-100  text-amber-600 rounded-xl flex items-center justify-center shrink-0">
               <Award size={20} />
             </div>
             <div>
-              <h5 className="font-bold text-amber-900 dark:text-amber-100 mb-1">تذكير هام</h5>
-              <p className="text-sm text-amber-800 dark:text-amber-300 leading-relaxed font-medium">
+              <h5 className="font-bold text-amber-900  mb-1">تذكير هام</h5>
+              <p className="text-sm text-amber-800  leading-relaxed font-medium">
                 بياناتك وتفضيلاتك المهنية يتم تحليلها دورياً لتحديث خطة تطوير المهارات المخصصة لك. يرجى التأكد من دقة المعلومات المدخلة.
               </p>
             </div>

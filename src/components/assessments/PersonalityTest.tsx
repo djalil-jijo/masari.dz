@@ -81,11 +81,11 @@ export default function PersonalityTest({ onComplete }: { onComplete: (results: 
           >
             {/* Progress Bar */}
             <div className="mb-12">
-              <div className="flex justify-between items-center mb-4 text-sm font-black text-primary-950 dark:text-slate-300">
+              <div className="flex justify-between items-center mb-4 text-sm font-black text-primary-950 ">
                 <span>السؤال {currentStep + 1} من {questions.length}</span>
                 <span>{Math.round(((currentStep + 1) / questions.length) * 100)}%</span>
               </div>
-              <div className="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+              <div className="w-full h-3 bg-slate-100  rounded-full overflow-hidden">
                 <motion.div 
                   initial={{ width: 0 }}
                   animate={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
@@ -96,7 +96,7 @@ export default function PersonalityTest({ onComplete }: { onComplete: (results: 
 
             {/* Question */}
             <div className="mb-12 min-h-[100px]">
-              <h2 className="text-3xl md:text-4xl font-black text-primary-950 dark:text-white leading-relaxed">
+              <h2 className="text-3xl md:text-4xl font-black text-primary-950  leading-relaxed">
                 {questions[currentStep].text}
               </h2>
             </div>
@@ -114,7 +114,7 @@ export default function PersonalityTest({ onComplete }: { onComplete: (results: 
                   }`}
                 >
                   <span className={`text-xl font-black ${
-                    answers[questions[currentStep].id] === opt.value ? 'text-white' : 'text-primary-950 dark:text-slate-300'
+                    answers[questions[currentStep].id] === opt.value ? 'text-white' : 'text-primary-950 '
                   }`}>
                     {opt.label}
                   </span>
@@ -152,11 +152,11 @@ export default function PersonalityTest({ onComplete }: { onComplete: (results: 
             animate={{ opacity: 1, scale: 1 }}
             className="glass-morphism rounded-[2.5rem] p-12 shadow-xl border border-white/40 text-center font-arabic"
           >
-            <div className="w-24 h-24 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8">
+            <div className="w-24 h-24 bg-green-100  text-green-600 rounded-full flex items-center justify-center mx-auto mb-8">
               <Check size={48} />
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">اكتمل اختبار السمات الشخصية!</h2>
-            <p className="text-slate-600 dark:text-slate-400 mb-12 text-lg">
+            <h2 className="text-3xl font-bold text-slate-900  mb-4">اكتمل اختبار السمات الشخصية!</h2>
+            <p className="text-slate-600  mb-12 text-lg">
               لقد قمنا بتحليل استجاباتك. يمكنك الآن عرض النتائج ومعرفة كيف تؤثر شخصيتك على مسارك المهني.
             </p>
             <button

@@ -55,10 +55,10 @@ export default function TestResults({
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6">
+      <div className="flex items-center justify-between gap-4 border-b border-slate-100  pb-6">
         <div>
-          <h2 className="text-3xl font-bold text-primary-950 dark:text-white mb-2">نتائج الاختيارات والمقاييس</h2>
-          <p className="text-slate-700 dark:text-slate-300 font-medium">ملخص شامل لأدائك في كافة المقاييس العلمية</p>
+          <h2 className="text-3xl font-bold text-primary-950  mb-2">نتائج الاختيارات والمقاييس</h2>
+          <p className="text-slate-700  font-medium">ملخص شامل لأدائك في كافة المقاييس العلمية</p>
         </div>
         <button className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-xl font-bold text-sm hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/20 active:scale-95">
           <BarChart2 size={18} />
@@ -77,15 +77,15 @@ export default function TestResults({
           >
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-slate-50  rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   {test.icon}
                 </div>
                 <div className={`px-3 py-1 rounded-full text-[10px] font-bold ${test.status === 'مكتمل' ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'}`}>
                   {test.status}
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-primary-950 dark:text-white mb-2">{test.title}</h3>
-              <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-6 font-medium">
+              <h3 className="text-xl font-bold text-primary-950  mb-2">{test.title}</h3>
+              <p className="text-slate-700  text-sm leading-relaxed mb-6 font-medium">
                 {test.desc}
               </p>
             </div>
@@ -97,7 +97,7 @@ export default function TestResults({
               </div>
               <div className="text-left">
                 <span className="text-xs text-slate-600 font-bold block mb-1">التاريخ:</span>
-                <div className="flex items-center gap-1 text-primary-950 dark:text-slate-300 text-xs font-bold">
+                <div className="flex items-center gap-1 text-primary-950  text-xs font-bold">
                   <Calendar size={12} className="text-primary-600" />
                   {test.date}
                 </div>

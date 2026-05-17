@@ -31,7 +31,7 @@ export default function AdminSystemSettings() {
              className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-bold transition-all whitespace-nowrap ${
                activeTab === tab.id 
                  ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/20 scale-105' 
-                 : 'text-slate-600 hover:bg-white/50 dark:hover:bg-slate-800'
+                 : 'text-slate-600 hover:bg-white/50 '
              }`}
            >
              {tab.icon}
@@ -46,22 +46,22 @@ export default function AdminSystemSettings() {
             {activeTab === 'general' && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 max-w-2xl">
                  <div>
-                   <h3 className="text-xl font-bold text-primary-950 dark:text-white mb-2">إعدادات المنصة الأساسية</h3>
-                   <p className="text-sm text-slate-700 dark:text-slate-300 mb-6 font-medium">البيانات الأساسية التي تظهر للمستخدمين وعناوين النظام.</p>
+                   <h3 className="text-xl font-bold text-primary-950  mb-2">إعدادات المنصة الأساسية</h3>
+                   <p className="text-sm text-slate-700  mb-6 font-medium">البيانات الأساسية التي تظهر للمستخدمين وعناوين النظام.</p>
                  </div>
                  
                  <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">اسم المنصة</label>
-                      <input type="text" defaultValue="منصة مساري الذكية" className="w-full px-4 py-3 glass-morphism border border-indigo-100/20 rounded-xl outline-none focus:border-primary-500 transition-all text-sm font-bold text-primary-950 dark:text-white" />
+                      <label className="block text-sm font-bold text-slate-800  mb-2">اسم المنصة</label>
+                      <input type="text" defaultValue="منصة مساري الذكية" className="w-full px-4 py-3 glass-morphism border border-indigo-100/20 rounded-xl outline-none focus:border-primary-500 transition-all text-sm font-bold text-primary-950 " />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">الرابط الأساسي (URL)</label>
+                      <label className="block text-sm font-bold text-slate-700  mb-2">الرابط الأساسي (URL)</label>
                       <input type="url" defaultValue="https://masari.app" className="w-full px-4 py-3 glass-morphism border border-indigo-100/20 rounded-xl outline-none focus:border-primary-500 transition-all text-sm font-bold text-slate-600 text-left" dir="ltr" />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">البريد المخصص للدعم الفني</label>
-                      <input type="email" defaultValue="support@masari.app" className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl outline-none focus:border-primary-500 transition-all text-sm font-medium text-slate-500 text-left" dir="ltr" />
+                      <label className="block text-sm font-bold text-slate-700  mb-2">البريد المخصص للدعم الفني</label>
+                      <input type="email" defaultValue="support@masari.app" className="w-full px-4 py-3 bg-slate-50  border border-slate-100  rounded-xl outline-none focus:border-primary-500 transition-all text-sm font-medium text-slate-500 text-left" dir="ltr" />
                     </div>
                  </div>
               </motion.div>
@@ -70,21 +70,21 @@ export default function AdminSystemSettings() {
             {activeTab === 'maintenance' && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 max-w-2xl">
                  <div>
-                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">وضع الصيانة والنظام</h3>
+                   <h3 className="text-lg font-bold text-slate-900  mb-2">وضع الصيانة والنظام</h3>
                    <p className="text-sm text-slate-500 mb-6">تحكم في حالة الخوادم والوصول المؤقت للمنصة.</p>
                  </div>
                  
-                 <div className="p-5 rounded-2xl border border-amber-200 bg-amber-50 dark:bg-amber-900/10 flex items-start gap-4">
-                    <div className="p-3 bg-amber-100 dark:bg-amber-900/30 text-amber-600 rounded-xl">
+                 <div className="p-5 rounded-2xl border border-amber-200 bg-amber-50  flex items-start gap-4">
+                    <div className="p-3 bg-amber-100  text-amber-600 rounded-xl">
                       <AlertTriangle size={24} />
                     </div>
                     <div className="flex-1">
-                       <h4 className="font-bold text-amber-900 dark:text-amber-500 mb-1">تفعيل وضع الصيانة</h4>
-                       <p className="text-sm text-amber-700 dark:text-amber-600/70 mb-4 leading-relaxed">عند تفعيل وضع الصيانة، لن يتمكن الطلاب أو المستشارون من الدخول للنظام. ستظهر لهم صفحة تخبرهم بالصيانة المجدولة.</p>
+                       <h4 className="font-bold text-amber-900  mb-1">تفعيل وضع الصيانة</h4>
+                       <p className="text-sm text-amber-700  mb-4 leading-relaxed">عند تفعيل وضع الصيانة، لن يتمكن الطلاب أو المستشارون من الدخول للنظام. ستظهر لهم صفحة تخبرهم بالصيانة المجدولة.</p>
                        <label className="relative inline-flex items-center cursor-pointer">
                           <input type="checkbox" className="sr-only peer" />
-                          <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
-                          <span className="mr-3 text-sm font-bold text-slate-600 dark:text-slate-400">تشغيل الآن</span>
+                          <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
+                          <span className="mr-3 text-sm font-bold text-slate-600 ">تشغيل الآن</span>
                        </label>
                     </div>
                  </div>
@@ -93,14 +93,14 @@ export default function AdminSystemSettings() {
 
             {/* Other tabs omitted for brevity in demo */}
             {(activeTab === 'smtp' || activeTab === 'security') && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="h-40 flex items-center justify-center text-slate-400 text-sm font-bold">
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="h-40 flex items-center justify-center text-slate-500 text-sm font-bold">
                  قيد التطوير...
               </motion.div>
             )}
 
          </div>
 
-         <div className="p-6 md:p-8 bg-white/40 dark:bg-slate-900/50 border-t border-indigo-100/20 flex justify-end">
+         <div className="p-6 md:p-8 bg-white/60  border-t border-indigo-100/20 flex justify-end">
             <button 
               onClick={handleSave}
               disabled={isSaving}

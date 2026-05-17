@@ -57,27 +57,27 @@ export default function SystemReports() {
           <div className="glass-morphism p-6 rounded-3xl border border-white/40 shadow-sm flex items-center justify-between">
             <div>
                <p className="text-sm font-bold text-slate-700 mb-1">النشاطات اليومية</p>
-               <h3 className="text-3xl font-black text-primary-950 dark:text-white">124</h3>
+               <h3 className="text-3xl font-black text-primary-950 ">124</h3>
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-50  flex items-center justify-center text-indigo-600">
                <Activity size={24} />
             </div>
          </div>
           <div className="glass-morphism p-6 rounded-3xl border border-white/40 shadow-sm flex items-center justify-between">
             <div>
                <p className="text-sm font-bold text-slate-700 mb-1">مقاييس منجزة</p>
-               <h3 className="text-3xl font-black text-primary-950 dark:text-white">45</h3>
+               <h3 className="text-3xl font-black text-primary-950 ">45</h3>
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-50  flex items-center justify-center text-emerald-600">
                <FileCheck size={24} />
             </div>
          </div>
           <div className="glass-morphism p-6 rounded-3xl border border-white/40 shadow-sm flex items-center justify-between">
             <div>
                <p className="text-sm font-bold text-slate-700 mb-1">جلسات معقودة</p>
-               <h3 className="text-3xl font-black text-primary-950 dark:text-white">12</h3>
+               <h3 className="text-3xl font-black text-primary-950 ">12</h3>
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center text-amber-600">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50  flex items-center justify-center text-amber-600">
                <CalendarIcon size={24} />
             </div>
          </div>
@@ -85,8 +85,8 @@ export default function SystemReports() {
 
       {/* Logs Table */}
       <div className="glass-morphism rounded-3xl border border-white/40 shadow-sm overflow-hidden flex flex-col h-[500px]">
-        <div className="p-6 border-b border-indigo-100/10 flex flex-col md:flex-row justify-between md:items-center gap-4 bg-white/40 dark:bg-slate-950/20">
-           <h3 className="text-lg font-bold text-primary-950 dark:text-white">سجل نشاط النظام (Audit Logs)</h3>
+        <div className="p-6 border-b border-indigo-100/10 flex flex-col md:flex-row justify-between md:items-center gap-4 bg-white/60 ">
+           <h3 className="text-lg font-bold text-primary-950 ">سجل نشاط النظام (Audit Logs)</h3>
            
            <div className="flex items-center gap-3">
               <div className="relative">
@@ -101,10 +101,10 @@ export default function SystemReports() {
                    <option value="SESSION">الجلسات المباشرة</option>
                    <option value="SYSTEM">تحديثات النظام</option>
                  </select>
-                 <Filter className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={14} />
+                 <Filter className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={14} />
               </div>
               
-              <button title="تصدير السجل بتنسيق CSV" className="p-2 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-500 hover:text-indigo-600 hover:border-indigo-200 hover:bg-indigo-50 dark:hover:bg-slate-800 transition-all">
+              <button onClick={() => alert('تم تصدير سجل النشاطات بنجاح (Simulation)')} title="تصدير السجل بتنسيق CSV" className="p-2 border border-slate-200 rounded-xl text-slate-500 hover:text-indigo-600 hover:border-indigo-200 hover:bg-indigo-50 transition-all">
                 <Download size={18} />
               </button>
            </div>
@@ -117,7 +117,7 @@ export default function SystemReports() {
                animate={{ opacity: 1, x: 0 }}
                transition={{ delay: index * 0.05 }}
                key={log.id} 
-               className="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors border border-transparent hover:border-slate-100 dark:hover:border-slate-800"
+               className="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50  transition-colors border border-transparent hover:border-slate-100 "
              >
                 <div className={`mt-1 w-8 h-8 rounded-full flex items-center justify-center border ${getLogColor(log.type)}`}>
                    {getLogIcon(log.type)}
@@ -125,12 +125,12 @@ export default function SystemReports() {
                 
                 <div className="flex-1">
                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-                      <p className="text-sm font-bold text-slate-900 dark:text-white">{log.action}</p>
-                      <span className="text-xs text-slate-400 font-medium whitespace-nowrap">{log.timestamp}</span>
+                      <p className="text-sm font-bold text-slate-900 ">{log.action}</p>
+                      <span className="text-xs text-slate-500 font-medium whitespace-nowrap">{log.timestamp}</span>
                    </div>
                    <div className="flex items-center gap-2 text-xs">
                       <span className="font-bold text-indigo-600">{log.user}</span>
-                      <span className="text-slate-300 dark:text-slate-700">•</span>
+                      <span className="text-slate-600 ">•</span>
                       <span className="text-slate-500">{log.role === 'ADMIN' ? 'مدير' : log.role === 'COUNSELOR' ? 'مستشار' : 'طالب'}</span>
                    </div>
                 </div>
@@ -138,7 +138,7 @@ export default function SystemReports() {
            ))}
            
            {filteredLogs.length === 0 && (
-             <div className="h-full flex items-center justify-center text-slate-400 font-medium text-sm">
+             <div className="h-full flex items-center justify-center text-slate-500 font-medium text-sm">
                لا توجد سجلات مطابقة لهذا الفلتر.
              </div>
            )}

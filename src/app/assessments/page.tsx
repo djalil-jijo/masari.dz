@@ -41,12 +41,12 @@ export default function AssessmentCenter() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="max-w-4xl mx-auto mb-12 glass-morphism p-8 rounded-[2.5rem] border border-white/40 shadow-xl">
-          <Link href="/" className="inline-flex items-center gap-2 text-slate-900 dark:text-white font-black hover:text-primary-600 transition-colors mb-6 group">
+          <Link href="/" className="inline-flex items-center gap-2 text-slate-900  font-black hover:text-primary-600 transition-colors mb-6 group">
             <ArrowLeft size={18} className="group-hover:translate-x-1 transition-transform" />
             <span>العودة للرئيسية</span>
           </Link>
-          <h1 className="text-4xl md:text-5xl font-black text-primary-950 dark:text-white mb-4">مركز المقاييس والاختبارات</h1>
-          <p className="text-slate-900 dark:text-white text-lg font-bold">
+          <h1 className="text-4xl md:text-5xl font-black text-primary-950  mb-4">مركز المقاييس والاختبارات</h1>
+          <p className="text-slate-900  text-lg font-bold">
             نقدم لك مجموعة من المقاييس العلمية المقننة لمساعدتك في فهم ذاتك وتحديد مسارك المهني والأكاديمي بدقة.
           </p>
         </div>
@@ -59,14 +59,14 @@ export default function AssessmentCenter() {
                 <div className={`w-16 h-16 ${test.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-black/5`}>
                   {test.icon}
                 </div>
-                <h3 className="text-2xl font-black text-primary-950 dark:text-white mb-4">{test.title}</h3>
-                <p className="text-slate-900 dark:text-white text-sm leading-relaxed mb-6 font-bold">
+                <h3 className="text-2xl font-black text-primary-950  mb-4">{test.title}</h3>
+                <p className="text-slate-900  text-sm leading-relaxed mb-6 font-bold">
                   {test.desc}
                 </p>
               </div>
 
               <div className="space-y-6">
-                <div className="flex items-center gap-6 text-sm font-black text-slate-900 dark:text-white">
+                <div className="flex items-center gap-6 text-sm font-black text-slate-900 ">
                   <div className="flex items-center gap-2">
                     <Clock size={16} />
                     <span>{test.time}</span>
@@ -79,7 +79,7 @@ export default function AssessmentCenter() {
                 
                 <Link 
                   href={test.href}
-                  className="block w-full text-center py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl hover:opacity-90 transition-all flex items-center justify-center gap-2"
+                  className="block w-full text-center py-4 bg-slate-900  text-white  font-bold rounded-2xl hover:opacity-90 transition-all flex items-center justify-center gap-2"
                 >
                   ابدأ المقياس الآن
                   <ChevronLeft size={18} />

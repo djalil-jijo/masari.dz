@@ -40,9 +40,9 @@ export default function LoginPage() {
           <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary-600/30">
             <Compass size={24} />
           </div>
-          <span className="text-xl font-bold text-primary-900 dark:text-white">مساري</span>
+          <span className="text-xl font-bold text-primary-900">مساري</span>
         </Link>
-        <Link href="/" className="text-sm font-bold text-primary-900/60 dark:text-slate-300 hover:text-primary-600 transition-colors flex items-center gap-1">
+        <Link href="/" className="text-sm font-bold text-primary-700 hover:text-primary-600 transition-colors flex items-center gap-1">
           <ArrowRight size={16} />
           العودة للرئيسية
         </Link>
@@ -51,10 +51,10 @@ export default function LoginPage() {
       <main className="flex-1 flex items-center justify-center p-4">
         <div className="max-w-md w-full">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-black text-primary-950 dark:text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-black text-primary-900 mb-4">
               {isRegister ? 'إنشاء حساب جديد' : 'تسجيل الدخول'}
             </h1>
-            <p className="text-slate-800 dark:text-slate-200 font-bold text-lg">
+            <p className="text-slate-700 font-bold text-lg">
               {isRegister ? 'انضم إلى منصة مساري لتخطيط مستقبلك' : 'مرحباً بك مجدداً في منصة مساري'}
             </p>
           </div>
@@ -69,20 +69,20 @@ export default function LoginPage() {
             <form onSubmit={handleLogin} className="space-y-5 relative z-10">
               {isRegister && (
                 <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
-                  <label className="block text-sm font-bold text-primary-950 dark:text-slate-300 mb-2 flex items-center gap-2">
+                  <label className="block text-sm font-bold text-primary-800 mb-2 flex items-center gap-2">
                     <User size={16} className="text-primary-600" />
                     الأسم الكامل
                   </label>
                   <input 
                     type="text" 
                     placeholder="أدخل اسمك"
-                    className="w-full px-5 py-3.5 rounded-2xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-600/5 transition-all font-bold text-primary-950 dark:text-white placeholder:text-slate-400"
+                    className="w-full px-5 py-3.5 rounded-2xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-600/5 transition-all font-bold text-primary-900 placeholder:text-slate-500"
                   />
                 </motion.div>
               )}
               
               <div>
-                <label className="block text-sm font-bold text-primary-950 dark:text-slate-300 mb-2 flex items-center gap-2">
+                <label className="block text-sm font-bold text-primary-800 mb-2 flex items-center gap-2">
                   <Mail size={16} className="text-primary-600" />
                   البريد الإلكتروني
                 </label>
@@ -91,13 +91,13 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="example@domain.com"
-                  className="w-full px-5 py-3.5 rounded-2xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-600/5 transition-all font-bold text-primary-950 dark:text-white placeholder:text-slate-400"
+                  className="w-full px-5 py-3.5 rounded-2xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-600/5 transition-all font-bold text-primary-900 placeholder:text-slate-500"
                 />
               </div>
               
               <div>
                 <div className="flex items-center justify-between mb-2">
-                   <label className="text-sm font-bold text-primary-950 dark:text-slate-300 flex items-center gap-2">
+                   <label className="text-sm font-bold text-primary-800 flex items-center gap-2">
                      <Lock size={16} className="text-primary-600" />
                      كلمة المرور
                    </label>
@@ -108,17 +108,17 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-5 py-3.5 rounded-2xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-600/5 transition-all font-bold text-primary-950 dark:text-white placeholder:text-slate-400"
+                  className="w-full px-5 py-3.5 rounded-2xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-600/5 transition-all font-bold text-primary-900 placeholder:text-slate-500"
                 />
               </div>
 
               <div className="flex items-center gap-2 py-2">
                 <input type="checkbox" id="remember" className="w-4 h-4 rounded border-slate-300 text-primary-600 focus:ring-primary-600" />
-                <label htmlFor="remember" className="text-sm text-primary-900/70 dark:text-slate-300 font-medium cursor-pointer">تذكرني على هذا الجهاز</label>
+                <label htmlFor="remember" className="text-sm text-primary-800 font-medium cursor-pointer">تذكرني على هذا الجهاز</label>
               </div>
 
               {error && (
-                <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 p-3 rounded-xl text-sm font-medium text-center">
+                <div className="bg-red-50 text-red-600 p-3 rounded-xl text-sm font-medium text-center">
                   {error}
                 </div>
               )}
@@ -132,11 +132,11 @@ export default function LoginPage() {
               </button>
               
               <div className="relative py-4">
-                <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-100 dark:border-slate-800"></div></div>
-                <div className="relative flex justify-center text-xs uppercase"><span className="bg-[#fdfdfd] dark:bg-[#0a0b1c] px-4 text-primary-900/50 dark:text-slate-400 font-black">أو</span></div>
+                <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200"></div></div>
+                <div className="relative flex justify-center text-xs uppercase"><span className="bg-white/90 px-4 text-primary-700 font-black">أو</span></div>
               </div>
 
-              <p className="text-center text-sm text-slate-700 dark:text-slate-300 font-bold">
+              <p className="text-center text-sm text-slate-700 font-bold">
                 {isRegister ? 'لديك حساب بالفعل؟' : 'ليس لديك حساب؟'}{' '}
                 <button 
                   onClick={() => setIsRegister(!isRegister)}
@@ -147,8 +147,8 @@ export default function LoginPage() {
               </p>
 
               {!isRegister && (
-                <div className="pt-4 text-center border-t border-slate-50 dark:border-slate-800">
-                  <Link href="/admin" className="text-xs font-bold text-primary-900/60 dark:text-slate-400 hover:text-indigo-600 transition-colors">
+                <div className="pt-4 text-center border-t border-slate-200">
+                  <Link href="/admin" className="text-xs font-bold text-primary-700 hover:text-primary-600 transition-colors">
                     دخول المستشارين والمديرين
                   </Link>
                 </div>
@@ -156,13 +156,13 @@ export default function LoginPage() {
             </form>
           </motion.div>
           
-          <p className="text-center mt-8 text-xs text-primary-900/40 dark:text-slate-500">
+          <p className="text-center mt-8 text-xs text-slate-600 font-medium">
             بالتسجيل في المنصة، أنت توافق على <span className="underline cursor-pointer font-bold">شروط الاستخدام</span> و <span className="underline cursor-pointer font-bold">سياسة الخصوصية</span>.
           </p>
         </div>
       </main>
 
-      <footer className="p-8 text-center text-primary-900/30 dark:text-slate-500 text-[10px] sm:text-xs font-bold">
+      <footer className="p-8 text-center text-slate-500 text-[10px] sm:text-xs font-bold">
         © {new Date().getFullYear()} مساري - جميع الحقوق محفوظة.
       </footer>
     </div>

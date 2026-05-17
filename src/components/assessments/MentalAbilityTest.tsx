@@ -78,18 +78,18 @@ export default function MentalAbilityTest() {
       <div className="max-w-4xl mx-auto p-6 animate-fade-in font-arabic">
         <div className="glass-morphism rounded-[2.5rem] shadow-xl border border-white/40 p-8">
           <div className="text-center mb-10">
-            <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4 font-black">
+            <div className="w-16 h-16 bg-primary-100  text-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4 font-black">
               <BarChart3 size={32} />
             </div>
-            <h2 className="text-4xl font-black text-primary-950 dark:text-white mb-2">نتائج اختبار القدرات العقلية</h2>
-            <p className="text-slate-700 dark:text-slate-300 font-bold">تحليل مفصل لقدراتك الذهنية بناءً على أدائك</p>
+            <h2 className="text-4xl font-black text-primary-950  mb-2">نتائج اختبار القدرات العقلية</h2>
+            <p className="text-slate-700  font-bold">تحليل مفصل لقدراتك الذهنية بناءً على أدائك</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {Object.entries(scores).map(([type, { correct, total }]) => (
-              <div key={type} className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div key={type} className="p-6 rounded-2xl bg-slate-50  border border-slate-100 ">
                 <div className="flex justify-between items-center mb-4">
-                  <h4 className="font-bold text-slate-900 dark:text-white">
+                  <h4 className="font-bold text-slate-900 ">
                     {type === 'L' && 'القدرة اللغوية'}
                     {type === 'M' && 'القدرة المنطقية/الرياضية'}
                     {type === 'S' && 'القدرة المكانية'}
@@ -97,7 +97,7 @@ export default function MentalAbilityTest() {
                   </h4>
                   <span className="text-primary-600 font-bold">{Math.round((correct / total) * 100)}%</span>
                 </div>
-                <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                <div className="h-2 bg-slate-200  rounded-full overflow-hidden">
                   <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: `${(correct / total) * 100}%` }}
@@ -109,7 +109,7 @@ export default function MentalAbilityTest() {
           </div>
 
           <div className="mt-12 text-center">
-            <div className="inline-block p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-800">
+            <div className="inline-block p-4 bg-slate-50  rounded-2xl border border-slate-100 ">
               <span className="text-slate-500 text-sm">النتيجة الإجمالية</span>
               <div className="text-4xl font-bold text-primary-600 mt-1">{totalCorrect} / {totalQuestions}</div>
             </div>
@@ -131,13 +131,13 @@ export default function MentalAbilityTest() {
     <div className="max-w-3xl mx-auto p-4 md:p-6">
       <div className="mb-8 font-arabic">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-3xl font-black text-primary-950 dark:text-white flex items-center gap-3">
+          <h2 className="text-3xl font-black text-primary-950  flex items-center gap-3">
             <Brain className="text-blue-600" size={32} />
             اختبار القدرات العقلية
           </h2>
-          <span className="text-sm font-bold text-slate-700 dark:text-slate-300">سؤال {currentPage + 1} من {abilityQuestions.length}</span>
+          <span className="text-sm font-bold text-slate-700 ">سؤال {currentPage + 1} من {abilityQuestions.length}</span>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 text-red-600 rounded-xl font-bold">
+        <div className="flex items-center gap-2 px-4 py-2 bg-red-50  text-red-600 rounded-xl font-bold">
           <Timer size={18} />
           <span>{Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}</span>
         </div>
@@ -153,13 +153,13 @@ export default function MentalAbilityTest() {
             className="flex-1 space-y-8"
           >
             <div className="space-y-6">
-              <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 text-xs font-bold rounded-full">
+              <span className="inline-block px-3 py-1 bg-blue-100  text-blue-600 text-xs font-bold rounded-full">
                 {q.type === 'L' && 'لغوي'}
                 {q.type === 'M' && 'منطقي رياضي'}
                 {q.type === 'S' && 'بصري مكاني'}
                 {q.type === 'Mem' && 'ذاكرة'}
               </span>
-              <p className="text-2xl font-black text-primary-950 dark:text-white leading-relaxed">
+              <p className="text-2xl font-black text-primary-950  leading-relaxed">
                 {q.text}
               </p>
               <div className="grid grid-cols-1 gap-4">
@@ -167,9 +167,9 @@ export default function MentalAbilityTest() {
                   <button
                     key={idx}
                     onClick={() => handleAnswer(q.id, idx)}
-                    className={`w-full text-right p-5 rounded-2xl border-2 glass-morphism border-white/20 text-slate-800 dark:text-white font-bold text-lg hover:border-primary-600 hover:bg-white/40 transition-all flex items-center gap-4 group
+                    className={`w-full text-right p-5 rounded-2xl border-2 glass-morphism border-white/20 text-slate-800  font-bold text-lg hover:border-primary-600 hover:bg-white/60 transition-all flex items-center gap-4 group
                       ${answers[q.id] === idx 
-                        ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/30 text-primary-600' 
+                        ? 'border-primary-600 bg-primary-50  text-primary-600' 
                         : ''
                       }`}
                   >
@@ -181,17 +181,17 @@ export default function MentalAbilityTest() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="mt-10 pt-8 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div className="mt-10 pt-8 border-t border-slate-100  flex items-center justify-between">
           <button
             disabled={currentPage === 0}
             onClick={() => setCurrentPage(prev => prev - 1)}
-            className="flex items-center gap-2 px-6 py-2.5 text-slate-600 dark:text-slate-400 font-bold disabled:opacity-30"
+            className="flex items-center gap-2 px-6 py-2.5 text-slate-600  font-bold disabled:opacity-30"
           >
             <ChevronRight />
             السابق
           </button>
           
-          <div className="text-sm font-bold text-slate-400" dir="ltr">
+          <div className="text-sm font-bold text-slate-500" dir="ltr">
             {currentPage + 1} / {abilityQuestions.length}
           </div>
 
@@ -206,7 +206,7 @@ export default function MentalAbilityTest() {
           ) : (
             <button
               onClick={() => setCurrentPage(prev => prev + 1)}
-              className="flex items-center gap-2 px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold rounded-xl hover:opacity-90 transition-all"
+              className="flex items-center gap-2 px-8 py-3 bg-slate-900  text-white  font-bold rounded-xl hover:opacity-90 transition-all"
             >
               التالي
               <ChevronLeft />

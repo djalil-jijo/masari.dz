@@ -97,11 +97,11 @@ export default function HollandTest() {
       <div className="max-w-4xl mx-auto p-6 animate-fade-in font-arabic">
         <div className="glass-morphism rounded-[2.5rem] shadow-xl border border-white/40 p-8">
           <div className="text-center mb-10">
-            <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-primary-100  text-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <BarChart3 size={32} />
             </div>
-            <h2 className="text-4xl font-black text-primary-950 dark:text-white mb-2">نتائج مقياس هولاند للميول</h2>
-            <p className="text-slate-700 dark:text-slate-300 font-bold">بناءً على إجاباتك، هذا هو التحليل النوعي لميولك المهنية</p>
+            <h2 className="text-4xl font-black text-primary-950  mb-2">نتائج مقياس هولاند للميول</h2>
+            <p className="text-slate-700  font-bold">بناءً على إجاباتك، هذا هو التحليل النوعي لميولك المهنية</p>
           </div>
 
           <div className="space-y-6">
@@ -112,11 +112,11 @@ export default function HollandTest() {
                     <span className={`px-3 py-1 rounded-full text-white text-xs font-black ${typeLabels[type].color}`}>
                       {index + 1}
                     </span>
-                    <h4 className="font-extrabold text-primary-950 dark:text-white">{typeLabels[type].title}</h4>
+                    <h4 className="font-extrabold text-primary-950 ">{typeLabels[type].title}</h4>
                   </div>
                   <span className="text-sm font-black text-primary-600">{score} نقطة</span>
                 </div>
-                <div className="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-3 bg-slate-100  rounded-full overflow-hidden">
                   <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: `${(score / 25) * 100}%` }}
@@ -129,11 +129,11 @@ export default function HollandTest() {
             ))}
           </div>
 
-          <div className="mt-12 p-6 bg-primary-50 dark:bg-primary-900/20 rounded-2xl border border-primary-100 dark:border-primary-800 flex gap-4 items-start">
+          <div className="mt-12 p-6 bg-primary-50  rounded-2xl border border-primary-100  flex gap-4 items-start">
             <Info className="text-primary-600 shrink-0" size={24} />
             <div>
-              <h5 className="font-bold text-primary-900 dark:text-primary-100 mb-1">توصية أولية:</h5>
-              <p className="text-sm text-primary-800 dark:text-primary-300 leading-relaxed">
+              <h5 className="font-bold text-primary-900  mb-1">توصية أولية:</h5>
+              <p className="text-sm text-primary-800  leading-relaxed">
                 نمطك الغالب هو ( {typeLabels[results[0].type].title} ). ننصحك باستكشاف التخصصات التي تتطلب مهارات {typeLabels[results[0].type].desc.split(' ').slice(2).join(' ')}
               </p>
             </div>
@@ -141,7 +141,7 @@ export default function HollandTest() {
 
           <button 
             onClick={() => { setShowResults(false); setAnswers({}); setCurrentPage(0); }}
-            className="w-full mt-8 py-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold rounded-2xl hover:bg-slate-200 transition-all"
+            className="w-full mt-8 py-4 bg-slate-100  text-slate-900  font-bold rounded-2xl hover:bg-slate-200 transition-all"
           >
             إعادة الاختبار
           </button>
@@ -154,13 +154,13 @@ export default function HollandTest() {
     <div className="max-w-3xl mx-auto p-4 md:p-6">
       <div className="mb-8 font-arabic">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-3xl font-black text-primary-950 dark:text-white flex items-center gap-3">
+          <h2 className="text-3xl font-black text-primary-950  flex items-center gap-3">
             <Compass className="text-primary-600" size={32} />
             مقياس الميول المهنية
           </h2>
-          <span className="text-sm font-bold text-slate-700 dark:text-slate-300 font-bold">سؤال {Object.keys(answers).length} من {questions.length}</span>
+          <span className="text-sm font-bold text-slate-700  font-bold">سؤال {Object.keys(answers).length} من {questions.length}</span>
         </div>
-        <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+        <div className="h-2 w-full bg-slate-100  rounded-full overflow-hidden">
           <motion.div 
             className="h-full bg-primary-600"
             initial={{ width: 0 }}
@@ -180,7 +180,7 @@ export default function HollandTest() {
           >
             {currentQuestions.map((q) => (
               <div key={q.id} className="space-y-4">
-                <p className="text-xl font-black text-primary-950 dark:text-white leading-relaxed">
+                <p className="text-xl font-black text-primary-950  leading-relaxed">
                   {q.id}. {q.text}
                 </p>
                 <div className="grid grid-cols-5 gap-2 md:gap-4">
@@ -191,14 +191,14 @@ export default function HollandTest() {
                       className={`h-12 md:h-14 rounded-xl border-2 transition-all flex items-center justify-center font-black text-lg
                         ${answers[q.id] === value 
                           ? 'border-primary-600 bg-primary-600 text-white shadow-xl shadow-primary-600/30 transform scale-110' 
-                          : 'glass-morphism border-white/20 text-slate-700 dark:text-slate-400 hover:border-primary-600'
+                          : 'glass-morphism border-white/20 text-slate-700  hover:border-primary-600'
                         }`}
                     >
                       {value}
                     </button>
                   ))}
                 </div>
-                <div className="flex justify-between text-[10px] md:text-xs text-slate-400 font-medium px-1">
+                <div className="flex justify-between text-[10px] md:text-xs text-slate-500 font-medium px-1">
                   <span>لا أوافق بشدة</span>
                   <span>أوافق بشدة</span>
                 </div>
@@ -207,11 +207,11 @@ export default function HollandTest() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="mt-10 pt-8 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div className="mt-10 pt-8 border-t border-slate-100  flex items-center justify-between">
           <button
             disabled={currentPage === 0}
             onClick={() => setCurrentPage(prev => prev - 1)}
-            className="flex items-center gap-2 px-6 py-2.5 text-slate-600 dark:text-slate-400 font-bold disabled:opacity-30 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-all"
+            className="flex items-center gap-2 px-6 py-2.5 text-slate-600  font-bold disabled:opacity-30 hover:bg-slate-50  rounded-xl transition-all"
           >
             <ChevronRight />
             السابق
@@ -229,7 +229,7 @@ export default function HollandTest() {
           ) : (
             <button
               onClick={() => setCurrentPage(prev => prev + 1)}
-              className="flex items-center gap-2 px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold rounded-xl hover:opacity-90 transition-all"
+              className="flex items-center gap-2 px-6 py-2.5 bg-slate-900  text-white  font-bold rounded-xl hover:opacity-90 transition-all"
             >
               التالي
               <ChevronLeft />
@@ -238,7 +238,7 @@ export default function HollandTest() {
         </div>
       </div>
 
-      <div className="mt-8 text-center text-slate-400 text-sm">
+      <div className="mt-8 text-center text-slate-500 text-sm">
         <p>يرجى الإجابة بصراحة لضمان دقة النتائج</p>
       </div>
     </div>

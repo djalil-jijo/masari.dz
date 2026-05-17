@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  /* Fonts */
+  --font-arabic: var(--font-ibm-plex-sans-arabic), system-ui, sans-serif;
+
   /* Primary: Deep energetic Obstan Indigo */
   --color-primary-50: #eef2ff;
   --color-primary-100: #e0e7ff;
@@ -38,13 +41,6 @@
   --foreground: #111330;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0b1c;
-    --foreground: #f8fafc;
-  }
-}
-
 html, body {
   /* Forced High-quality multi-stop gradient inspired by Obstan website */
   background-image: 
@@ -52,33 +48,20 @@ html, body {
     radial-gradient(at 100% 0%, rgba(252, 228, 236, 0.8) 0, transparent 50%),
     radial-gradient(at 100% 100%, rgba(224, 247, 250, 0.8) 0, transparent 50%),
     radial-gradient(at 0% 100%, rgba(252, 228, 236, 0.8) 0, transparent 50%),
-    linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
-  background-attachment: fixed !important;
-  background-size: cover !important;
-  background-color: #ffffff !important;
+    linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #ffffff;
   color: var(--foreground);
   font-family: var(--font-arabic);
   min-height: 100vh;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: var(--background);
-    background-image: none;
-  }
-}
-
 .glass-morphism {
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-}
-
-.dark .glass-morphism {
-  background: rgba(10, 11, 28, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 

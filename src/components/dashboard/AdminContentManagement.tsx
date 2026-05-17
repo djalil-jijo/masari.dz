@@ -26,15 +26,21 @@ const contentItems = [
 
 export default function AdminContentManagement() {
   const [filter, setFilter] = useState('All');
+  const [items, setItems] = useState(contentItems);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<any>(null);
+
+  const filteredItems = items.filter(item => filter === 'All' || filter === 'الكل' || item.category === filter);
 
   return (
     <div className="space-y-8 animate-fade-in">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h2 className="text-3xl font-bold text-primary-950 dark:text-white">إدارة المحتوى والإعلانات</h2>
-          <p className="text-slate-700 dark:text-slate-300 font-medium">إدارة المقالات، الأدلة الإرشادية، والتنبيهات العامة للمنصة</p>
+          <h2 className="text-3xl font-bold text-primary-950 ">إدارة المحتوى والإعلانات</h2>
+          <p className="text-slate-700  font-medium">إدارة المقالات، الأدلة الإرشادية، والتنبيهات العامة للمنصة</p>
         </div>
-        <button className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-2xl font-bold shadow-lg shadow-primary-600/30 hover:bg-primary-700 transition-all hover:scale-105 active:scale-95">
+        <button onClick={() => setIsAddModalOpen(true)} className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-2xl font-bold shadow-lg shadow-primary-600/30 hover:bg-primary-700 transition-all hover:scale-105 active:scale-95">
           <Plus size={20} />
           إضافة محتوى جديد
         </button>
@@ -42,12 +48,12 @@ export default function AdminContentManagement() {
 
       {/* Tabs & Filters */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-indigo-100/20 pb-4">
-        <div className="flex items-center gap-1 bg-white/40 dark:bg-slate-800/40 p-1 rounded-xl glass-morphism">
+        <div className="flex items-center gap-1 bg-white/60  p-1 rounded-xl glass-morphism">
           {['الكل', 'مقالات', 'أدلة مهنية', 'إعلانات'].map((tab) => (
             <button 
               key={tab}
               onClick={() => setFilter(tab)}
-              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${filter === tab || (tab === 'الكل' && filter === 'All') ? 'bg-primary-600 text-white shadow-md' : 'text-slate-600 dark:text-slate-400 hover:bg-white/50'}`}
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${filter === tab || (tab === 'الكل' && filter === 'All') ? 'bg-primary-600 text-white shadow-md' : 'text-slate-600  hover:bg-white/50'}`}
             >
               {tab}
             </button>
@@ -56,7 +62,7 @@ export default function AdminContentManagement() {
         
         <div className="flex items-center gap-3">
           <div className="relative">
-            <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+            <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
             <input 
               type="text" 
               placeholder="البحث في العناوين..."
@@ -71,7 +77,7 @@ export default function AdminContentManagement() {
 
       {/* Content Grid */}
       <div className="grid grid-cols-1 gap-4">
-        {contentItems.map((item, idx) => (
+        {filteredItems.map((item, idx) => (
           <motion.div 
             key={item.id}
             initial={{ opacity: 0, y: 10 }}
@@ -80,23 +86,23 @@ export default function AdminContentManagement() {
             className="glass-morphism p-5 rounded-3xl border border-white/40 hover:border-primary-200 transition-all group flex flex-col md:flex-row md:items-center justify-between gap-4"
           >
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-2xl flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 bg-primary-100  text-primary-600 rounded-2xl flex items-center justify-center shrink-0">
                 {item.category === 'إعلانات' ? <Globe size={24} /> : <FileText size={24} />}
               </div>
               <div>
-                <h3 className="text-lg font-bold text-primary-950 dark:text-white group-hover:text-primary-600 transition-colors">{item.title}</h3>
+                <h3 className="text-lg font-bold text-primary-950  group-hover:text-primary-600 transition-colors">{item.title}</h3>
                 <div className="flex items-center gap-4 mt-1 text-xs font-bold text-slate-500">
                   <span className="flex items-center gap-1"><Edit2 size={12} /> {item.author}</span>
                   <span className="flex items-center gap-1"><Eye size={12} /> {item.views} مشاهدة</span>
-                  <span className="bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded text-primary-600">{item.category}</span>
+                  <span className="bg-primary-50  px-2 py-0.5 rounded text-primary-600">{item.category}</span>
                 </div>
               </div>
             </div>
 
             <div className="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-4 md:pt-0">
               <div className="flex flex-col items-end">
-                <div className="text-[10px] text-slate-400 font-bold mb-1 uppercase tracking-wider">تاريخ النشر</div>
-                <div className="text-sm font-bold text-slate-700 dark:text-slate-300">{item.date}</div>
+                <div className="text-[10px] text-slate-500 font-bold mb-1 uppercase tracking-wider">تاريخ النشر</div>
+                <div className="text-sm font-bold text-slate-700 ">{item.date}</div>
               </div>
 
               <div className="flex items-center gap-2">
@@ -108,13 +114,13 @@ export default function AdminContentManagement() {
                 <div className="h-8 w-[1px] bg-indigo-100/20 mx-2 hidden md:block"></div>
 
                 <div className="flex items-center gap-1">
-                  <button className="p-2 text-slate-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all" title="تعديل">
+                  <button onClick={() => { setSelectedItem(item); setIsEditModalOpen(true); }} className="p-2 text-slate-500 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all" title="تعديل">
                     <Edit2 size={18} />
                   </button>
-                  <button className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="حذف">
+                  <button onClick={() => setItems(prev => prev.filter(i => i.id !== item.id))} className="p-2 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="حذف">
                     <Trash2 size={18} />
                   </button>
-                  <button className="p-2 text-slate-400 hover:text-slate-600 rounded-lg transition-all">
+                  <button className="p-2 text-slate-500 hover:text-slate-600 rounded-lg transition-all">
                     <MoreVertical size={18} />
                   </button>
                 </div>
@@ -128,20 +134,63 @@ export default function AdminContentManagement() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="glass-morphism p-6 rounded-3xl border border-green-100/20 bg-green-50/10">
            <div className="text-slate-500 text-xs font-bold mb-2">إجمالي المقالات</div>
-           <div className="text-2xl font-bold text-primary-950 dark:text-white">124 مقالاً</div>
+           <div className="text-2xl font-bold text-primary-950 ">124 مقالاً</div>
            <div className="text-[10px] text-green-500 font-bold mt-2">+12 مقالاً هذا الشهر</div>
         </div>
         <div className="glass-morphism p-6 rounded-3xl border border-blue-100/20 bg-blue-50/10">
            <div className="text-slate-500 text-xs font-bold mb-2">المشاهدات الكلية</div>
-           <div className="text-2xl font-bold text-primary-950 dark:text-white">45.2K</div>
+           <div className="text-2xl font-bold text-primary-950 ">45.2K</div>
            <div className="text-[10px] text-blue-500 font-bold mt-2">زيادة 8% عن الأسبوع الماضي</div>
         </div>
         <div className="glass-morphism p-6 rounded-3xl border border-indigo-100/20 bg-indigo-50/10">
            <div className="text-slate-500 text-xs font-bold mb-2">إعلانات نشطة</div>
-           <div className="text-2xl font-bold text-primary-950 dark:text-white">3 إعلانات</div>
+           <div className="text-2xl font-bold text-primary-950 ">3 إعلانات</div>
            <div className="text-[10px] text-indigo-500 font-bold mt-2">تغطي كامل المنصة</div>
         </div>
       </div>
+
+      {/* Modals */}
+      {(isAddModalOpen || isEditModalOpen) && (
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-morphism w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border border-white/40 p-6 text-right">
+             <h3 className="text-xl font-bold text-slate-900 mb-6">
+                {isAddModalOpen ? 'إضافة محتوى جديد' : 'تعديل المحتوى'}
+             </h3>
+             <div className="space-y-4 font-arabic">
+                <div>
+                   <label className="block text-sm font-bold text-slate-700 mb-2">العنوان</label>
+                   <input type="text" defaultValue={isEditModalOpen ? selectedItem?.title : ''} className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm" />
+                </div>
+                <div>
+                   <label className="block text-sm font-bold text-slate-700 mb-2">التصنيف</label>
+                   <select className="w-full px-4 py-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:border-primary-500 transition-all font-medium text-sm">
+                      <option>مقالات</option>
+                      <option>أدلة مهنية</option>
+                      <option>إعلانات</option>
+                   </select>
+                </div>
+                <div className="pt-4 flex items-center gap-3">
+                   <button 
+                     onClick={() => {
+                        setIsAddModalOpen(false);
+                        setIsEditModalOpen(false);
+                        alert(isAddModalOpen ? 'تمت إضافة المحتوى بنجاح' : 'تم تعديل المحتوى بنجاح');
+                     }}
+                     className="flex-1 py-3 bg-primary-600 text-white rounded-xl font-bold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/20"
+                   >
+                     حفظ
+                   </button>
+                   <button 
+                     onClick={() => { setIsAddModalOpen(false); setIsEditModalOpen(false); }}
+                     className="px-6 py-3 bg-slate-100 text-slate-600 rounded-xl font-bold hover:bg-slate-200 transition-colors"
+                   >
+                     إلغاء
+                   </button>
+                </div>
+             </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

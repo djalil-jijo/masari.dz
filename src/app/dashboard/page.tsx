@@ -55,10 +55,10 @@ export default function StudentDashboard() {
     <div className="min-h-screen bg-transparent font-arabic flex">
       {/* Sidebar */}
       <aside className="w-64 glass-morphism border-l border-white/20 hidden lg:flex flex-col">
-        <div className="p-6 border-b border-slate-100 dark:border-slate-800">
+        <div className="p-6 border-b border-slate-100 ">
            <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold italic shadow-lg shadow-primary-600/30">M</div>
-             <span className="text-xl font-bold text-slate-800 dark:text-white">مساري</span>
+             <span className="text-xl font-bold text-slate-800 ">مساري</span>
            </Link>
         </div>
         
@@ -74,7 +74,7 @@ export default function StudentDashboard() {
              <button 
                key={item.id}
                onClick={() => { setActiveTab(item.id as any); setIsSidebarOpen(false); }}
-               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${activeTab === item.id ? 'bg-primary-50 dark:bg-primary-900/30 text-primary-600' : 'text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
+               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${activeTab === item.id ? 'bg-primary-50  text-primary-600' : 'text-slate-500 hover:bg-slate-50 '}`}
              >
                {item.icon}
                {item.label}
@@ -82,15 +82,15 @@ export default function StudentDashboard() {
            ))}
         </nav>
 
-        <div className="p-4 border-t border-slate-100 dark:border-slate-800">
-           <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center gap-3">
-              <div className="w-10 h-10 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center font-bold">أ</div>
+        <div className="p-4 border-t border-slate-100 ">
+           <div className="p-4 rounded-2xl bg-slate-50  flex items-center gap-3">
+              <div className="w-10 h-10 bg-slate-200  rounded-full flex items-center justify-center font-bold">أ</div>
               <div className="flex-1 overflow-hidden">
-                 <div className="text-sm font-bold text-slate-900 dark:text-white truncate">أحمد الطالب</div>
+                 <div className="text-sm font-bold text-slate-900  truncate">أحمد الطالب</div>
                  <div className="text-[10px] text-slate-500 truncate">ahmed@student.com</div>
               </div>
               <Link href="/login" onClick={() => localStorage.removeItem('userRole')} title="تسجيل الخروج">
-                 <LogOut size={16} className="text-slate-400 cursor-pointer hover:text-red-500" />
+                 <LogOut size={16} className="text-slate-500 cursor-pointer hover:text-red-500" />
               </Link>
            </div>
         </div>
@@ -98,7 +98,7 @@ export default function StudentDashboard() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0">
-        <header className="h-16 glass-morphism bg-white/40 border-b border-white/20 px-4 md:px-8 flex items-center justify-between sticky top-0 z-20">
+        <header className="h-16 glass-morphism bg-white/60 border-b border-white/20 px-4 md:px-8 flex items-center justify-between sticky top-0 z-20">
            <div className="flex items-center gap-3">
               <button 
                 onClick={() => setIsSidebarOpen(true)}
@@ -107,14 +107,14 @@ export default function StudentDashboard() {
               >
                 <Menu size={24} />
               </button>
-              <h2 className="text-lg font-bold text-slate-800 dark:text-white">لوحة تحكم الطالب</h2>
+              <h2 className="text-lg font-bold text-slate-800 ">لوحة تحكم الطالب</h2>
            </div>
            <div className="flex items-center gap-4">
-              <button className="p-2 text-slate-400 hover:text-primary-600 relative">
+              <button className="p-2 text-slate-500 hover:text-primary-600 relative">
                  <Bell size={20} />
                  <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>
-              <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 lg:hidden"></div>
+              <div className="w-8 h-8 rounded-full bg-slate-100  border border-slate-200  lg:hidden"></div>
            </div>
         </header>
 
@@ -152,14 +152,14 @@ export default function StudentDashboard() {
              className="absolute top-0 right-0 w-72 h-full glass-morphism shadow-2xl flex flex-col animate-slide-in-right"
              onClick={(e) => e.stopPropagation()}
            >
-             <div className="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+             <div className="p-6 border-b border-slate-100  flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold italic">M</div>
-                  <span className="text-xl font-bold text-slate-900 dark:text-white">مساري</span>
+                  <span className="text-xl font-bold text-slate-900 ">مساري</span>
                 </Link>
                 <button 
                   onClick={() => setIsSidebarOpen(false)}
-                  className="p-2 text-slate-400 hover:text-red-500 transition-colors"
+                  className="p-2 text-slate-500 hover:text-red-500 transition-colors"
                 >
                   <X size={20} />
                 </button>
@@ -177,7 +177,7 @@ export default function StudentDashboard() {
                   <button 
                     key={item.id}
                     onClick={() => { setActiveTab(item.id as any); setIsSidebarOpen(false); }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${activeTab === item.id ? 'bg-primary-600 text-white shadow-md shadow-primary-600/20' : 'text-slate-500 hover:bg-white/50 dark:hover:bg-slate-800 hover:text-primary-600'}`}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${activeTab === item.id ? 'bg-primary-600 text-white shadow-md shadow-primary-600/20' : 'text-slate-500 hover:bg-white/50  hover:text-primary-600'}`}
                   >
                     {item.icon}
                     {item.label}

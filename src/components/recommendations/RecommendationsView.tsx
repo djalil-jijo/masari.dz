@@ -35,11 +35,11 @@ export default function RecommendationsView({ userHolland, userAbilities, userPe
     <div className="max-w-5xl mx-auto p-6 font-arabic animate-fade-in">
       <div className="flex items-center justify-between mb-12">
         <div>
-          <h2 className="text-3xl font-bold text-primary-950 dark:text-white mb-2">التوصيات الأكاديمية المقترحة</h2>
-          <p className="text-slate-700 dark:text-slate-300 font-medium">بناءً على نتائجك العلمية، هذه هي التخصصات الأكثر توافقاً معك</p>
+          <h2 className="text-3xl font-bold text-primary-950  mb-2">التوصيات الأكاديمية المقترحة</h2>
+          <p className="text-slate-700  font-medium">بناءً على نتائجك العلمية، هذه هي التخصصات الأكثر توافقاً معك</p>
         </div>
         <div className="hidden md:flex items-center gap-4">
-          <div className="px-4 py-2 bg-primary-50 dark:bg-primary-900/30 text-primary-600 rounded-xl font-bold border border-primary-100">
+          <div className="px-4 py-2 bg-primary-50  text-primary-600 rounded-xl font-bold border border-primary-100">
             نمطك: {userHolland.join(" - ")}
           </div>
         </div>
@@ -81,38 +81,38 @@ export default function RecommendationsView({ userHolland, userAbilities, userPe
             )}
             
             <div className="flex items-center justify-between mb-6">
-              <div className="w-12 h-12 bg-slate-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-primary-600">
+              <div className="w-12 h-12 bg-slate-50  rounded-xl flex items-center justify-center text-primary-600">
                 <GraduationCap size={24} />
               </div>
               <div className="text-right">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider italic">نسبة التوافق</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider italic">نسبة التوافق</span>
                 <div className="text-2xl font-bold text-primary-600">{major.compatibility}%</div>
               </div>
             </div>
 
-            <h3 className="text-xl font-bold text-primary-950 dark:text-white mb-3 group-hover:text-primary-600 transition-colors">
+            <h3 className="text-xl font-bold text-primary-950  mb-3 group-hover:text-primary-600 transition-colors">
               {major.name}
             </h3>
-            <p className="text-sm text-slate-700 dark:text-slate-300 font-bold leading-relaxed mb-6">
+            <p className="text-sm text-slate-700  font-bold leading-relaxed mb-6">
               {major.description}
             </p>
 
-            <div className="space-y-4 pt-6 border-t border-slate-50 dark:border-slate-800">
+            <div className="space-y-4 pt-6 border-t border-slate-50 ">
               <div>
-                <h4 className="text-xs font-bold text-slate-400 mb-3 flex items-center gap-2">
+                <h4 className="text-xs font-bold text-slate-500 mb-3 flex items-center gap-2">
                   <Briefcase size={14} />
                   المسارات المهنية المرتبطة:
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {major.careers.map((career, i) => (
-                    <span key={i} className="px-3 py-1 glass-morphism border border-indigo-100/20 text-slate-700 dark:text-slate-300 text-[10px] font-bold rounded-lg transition-colors">
+                    <span key={i} className="px-3 py-1 glass-morphism border border-indigo-100/20 text-slate-700  text-[10px] font-bold rounded-lg transition-colors">
                       {career}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <button className="w-full mt-4 flex items-center justify-center gap-2 text-sm font-bold text-primary-950 dark:text-white py-3 glass-morphism border border-indigo-100/10 rounded-xl hover:bg-white/60 dark:hover:bg-slate-700 transition-all">
+              <button className="w-full mt-4 flex items-center justify-center gap-2 text-sm font-bold text-primary-950  py-3 glass-morphism border border-indigo-100/10 rounded-xl hover:bg-white/60  transition-all">
                 تفاصيل المسار
                 <ArrowLeft size={16} />
               </button>
@@ -122,10 +122,10 @@ export default function RecommendationsView({ userHolland, userAbilities, userPe
       </div>
 
       {/* Summary Action */}
-      <div className="mt-16 bg-slate-900 dark:bg-white rounded-3xl p-10 text-white dark:text-slate-900 flex flex-col md:row items-center justify-between gap-8 overflow-hidden relative">
+      <div className="mt-16 bg-slate-900  rounded-3xl p-10 text-white  flex flex-col md:row items-center justify-between gap-8 overflow-hidden relative">
         <div className="relative z-10">
           <h2 className="text-2xl font-bold mb-3">هل ترغب في مقارنة خياراتك؟</h2>
-          <p className="text-slate-400 dark:text-slate-600">يمكنك مقارنة تخصصين جنباً إلى جنب لمعرفة أيهما يناسب سماتك الشخصية أكثر.</p>
+          <p className="text-slate-500 ">يمكنك مقارنة تخصصين جنباً إلى جنب لمعرفة أيهما يناسب سماتك الشخصية أكثر.</p>
         </div>
         <button className="relative z-10 flex items-center gap-3 px-8 py-4 bg-primary-600 text-white rounded-2xl font-bold hover:bg-primary-700 transition-all shadow-xl shadow-primary-600/30 shrink-0">
           <GitCompare size={20} />

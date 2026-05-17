@@ -42,12 +42,12 @@ const strengths = [
 export default function StrengthsAnalysis() {
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6">
+      <div className="flex items-center justify-between gap-4 border-b border-slate-100  pb-6">
         <div>
-          <h2 className="text-3xl font-bold text-primary-950 dark:text-white mb-2">تحليل نقاط القوة</h2>
-          <p className="text-slate-700 dark:text-slate-300 font-medium">نظرة عميقة على مهاراتك الذهنية والمهنية المتميزة</p>
+          <h2 className="text-3xl font-bold text-primary-950  mb-2">تحليل نقاط القوة</h2>
+          <p className="text-slate-700  font-medium">نظرة عميقة على مهاراتك الذهنية والمهنية المتميزة</p>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 bg-amber-50 dark:bg-amber-900/30 text-amber-600 rounded-xl font-bold text-sm">
+        <div className="flex items-center gap-2 px-4 py-2 bg-amber-50  text-amber-600 rounded-xl font-bold text-sm">
           <Sparkles size={18} />
           <span>تحليل الذكاء الاصطناعي</span>
         </div>
@@ -60,7 +60,7 @@ export default function StrengthsAnalysis() {
               <div className="w-10 h-10 rounded-xl glass-morphism border border-indigo-100/20 flex items-center justify-center">
                 {group.icon}
               </div>
-              <h3 className="text-xl font-bold text-primary-950 dark:text-white">{group.category}</h3>
+              <h3 className="text-xl font-bold text-primary-950 ">{group.category}</h3>
             </div>
             
             <div className="space-y-4">
@@ -73,20 +73,20 @@ export default function StrengthsAnalysis() {
                   className="glass-morphism p-6 rounded-3xl border border-white/40 shadow-sm hover:shadow-md transition-shadow group"
                 >
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-bold text-primary-950 dark:text-white flex items-center gap-2">
+                    <h4 className="font-bold text-primary-950  flex items-center gap-2">
                       <Zap size={16} className="text-amber-500" />
                       {item.title}
                     </h4>
                     <span className="text-primary-600 font-black">{item.level}%</span>
                   </div>
-                  <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-4">
+                  <div className="h-2 w-full bg-slate-100  rounded-full overflow-hidden mb-4">
                     <motion.div 
                       initial={{ width: 0 }}
                       animate={{ width: `${item.level}%` }}
                       className="h-full bg-primary-600 rounded-full"
                     />
                   </div>
-                  <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed font-bold">
+                  <p className="text-slate-700  text-sm leading-relaxed font-bold">
                     {item.desc}
                   </p>
                 </motion.div>
@@ -111,17 +111,17 @@ export default function StrengthsAnalysis() {
               <TrendingUp size={24} />
             </div>
             <h5 className="font-bold text-lg mb-2">تطور ملحوظ</h5>
-            <p className="text-slate-400 text-sm">تحسنت مهارات حل المشكلات لديك بنسبة 15% منذ الاختبار السابق.</p>
+            <p className="text-slate-500 text-sm">تحسنت مهارات حل المشكلات لديك بنسبة 15% منذ الاختبار السابق.</p>
           </div>
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary-600/10 rounded-full blur-2xl"></div>
         </div>
 
         <div className="p-6 rounded-3xl glass-morphism border border-white/40 shadow-sm flex flex-col justify-between">
           <div className="flex items-center gap-3">
-             <div className="p-2 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 rounded-lg">
+             <div className="p-2 bg-indigo-50  text-indigo-600 rounded-lg">
                 <PieChart size={20} />
              </div>
-             <span className="font-bold text-primary-950 dark:text-white">توازن المهارات</span>
+             <span className="font-bold text-primary-950 ">توازن المهارات</span>
           </div>
           <div className="h-24 flex items-end justify-around p-2">
              <div className="w-4 bg-blue-500 h-[60%] rounded-t-sm"></div>
@@ -129,7 +129,7 @@ export default function StrengthsAnalysis() {
              <div className="w-4 bg-amber-500 h-[45%] rounded-t-sm"></div>
              <div className="w-4 bg-indigo-500 h-[70%] rounded-t-sm"></div>
           </div>
-          <p className="text-[10px] text-slate-400 text-center">مقارنة بين الجوانب العلمية والأدبية</p>
+          <p className="text-[10px] text-slate-500 text-center">مقارنة بين الجوانب العلمية والأدبية</p>
         </div>
       </div>
     </div>
