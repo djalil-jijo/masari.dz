@@ -178,7 +178,7 @@ export default function LandingPage() {
                     <span className="text-primary-800 py-1 px-2 mx-1 bg-primary-100 rounded-lg whitespace-nowrap">
                       تفريغ، تنظيم،
                     </span>{" "}
-                    تحليل، تهدف إلى دعم{" "}
+                    تحليل المقاييس النفسية و المهنية، تهدف إلى دعم{" "}
                     <span className="text-black ">مستشاري التوجيه</span>،{" "}
                     <span className="text-black ">الأخصائيين النفسيين</span>،{" "}
                     <span className="text-black ">التلاميذ</span>، و{" "}
