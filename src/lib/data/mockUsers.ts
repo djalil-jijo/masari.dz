@@ -1,6 +1,6 @@
 import { fakerAR as faker } from '@faker-js/faker';
 
-export type Role = 'ADMIN' | 'COUNSELOR' | 'STUDENT';
+export type Role = 'ADMIN' | 'COUNSELOR' | 'SPECIALIST' | 'STUDENT';
 export type Status = 'ACTIVE' | 'SUSPENDED';
 
 export interface UserData {
@@ -11,6 +11,8 @@ export interface UserData {
   status: Status;
   joinDate: string;
   school?: string;
+  title?: string;
+  avatar?: string;
 }
 
 const algerianFirstNames = [

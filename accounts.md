@@ -1,26 +1,44 @@
-Here is a list of the existing accounts that can be used to log in to the Masari platform:
+# منصة مساري - بيانات تسجيل الدخول للحسابات
 
-## Admin Accounts
-- **Name:** مدير النظام
-- **Email:** admin@masari.com
-- **Role:** ADMIN
+**رابط صفحة تسجيل الدخول:**  
+👉 `http://localhost:3000/login`
 
-## Counselor Accounts
-- **Name:** المستشار التربوي
-- **Email:** counselor@masari.com
-- **Role:** COUNSELOR
+---
 
-- **Name:** سارة خالد (Suspended)
-- **Email:** sara@counselor.com
-- **Role:** COUNSELOR
+### 1. حساب الطالبة (واجهة الصورة 1: مكتبة المقاييس)
+* **البريد الإلكتروني:** `student@masari.com`
+* **كلمة المرور:** `student123`
+* **نوع الحساب:** طالبة (`STUDENT`)
+* **الرابط المحمي:** `http://localhost:3000/dashboard`
+* **الوصف:** واجهة مخصصة للطلبة ومذكرات التخرج، تحتوي على مكتبة المقاييس النفسية والمهنية، ومعلومات مفيدة، ونتائج الاختبارات.
 
-## Student Accounts
-- **Name:** أحمد بوعلام
-- **Email:** ahmed@student.com
-- **Role:** STUDENT
+---
 
-- **Name:** أمين مدني
-- **Email:** amin@student.com
-- **Role:** STUDENT
+### 2. حساب الأخصائي النفسي في القطاع الخاص (واجهة الصورة 2)
+* **البريد الإلكتروني:** `specialist@masari.com`
+* **كلمة المرور:** `specialist123`
+* **نوع الحساب:** أخصائي نفسي عيادة خاصة (`SPECIALIST`)
+* **الرابط المحمي:** `http://localhost:3000/specialist/dashboard`
+* **الوصف:** واجهة إدارة العملاء والملفات النفسية، متابعة الجلسات، تفريغ المقاييس، البنك العلمي، والأدوات السريعة لحجز المواعيد.
 
-*Note: For testing purposes, you can usually use any password since this is mock data, or check your authentication implementation for default passwords.*
+---
+
+### 3. حساب مستشار الصحة المدرسية والتوجيه (واجهة الصورة 3)
+* **البريد الإلكتروني:** `counselor@masari.com`
+* **كلمة المرور:** `counselor123`
+* **نوع الحساب:** مستشار وأخصائي صحة مدرسية (`COUNSELOR`)
+* **الرابط المحمي:** `http://localhost:3000/counselor/dashboard`
+* **الوصف:** بنك شامل للمقاييس لخدمة التوجيه والدعم النفسي للطلبة، إدارة المستفيدين (تلاميذ/أولياء)، وأحدث المقاييس المضافة.
+
+---
+
+### 4. حساب مدير النظام (Admin)
+* **البريد الإلكتروني:** `admin@masari.com`
+* **كلمة المرور:** `admin123`
+* **نوع الحساب:** مدير عام للمنصة (`ADMIN`)
+* **الرابط المحمي:** `http://localhost:3000/admin`
+* **الوصف:** لوحة الإدارة العليا والتحكم المركزي بكافة المستخدمين والمقاييس.
+
+---
+
+> **ملاحظة أمنية:** جميع البروفايلات أعلاه محمية ومخصصة لكل مستخدم، ولا يمكن الوصول لأي منها دون كتابة البريد وكلمة المرور المطابقة في صفحة تسجيل الدخول.

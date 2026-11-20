@@ -1,45 +1,52 @@
 "use client";
 
-import React, { useState } from 'react';
-import { ArrowRight, Compass, LogIn, Mail, Lock, User } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, LogIn, Mail, Lock, User, ShieldAlert } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
 import { useRouter } from 'next/navigation';
+import { REGISTERED_ACCOUNTS, setCurrentSession } from '@/lib/auth';
 
 export default function LoginPage() {
   const [isRegister, setIsRegister] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [infoNotice, setInfoNotice] = useState('');
   const router = useRouter();
+
+  useEffect(() => {
+    // Check if user was redirected due to unauthorized access
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('unauthorized') === 'true') {
+        setInfoNotice('عذراً، هذه الصفحة بروفايل خاص محمي. يرجى تسجيل الدخول بحساب المستخدم المصرح له للوصول إليها.');
+      }
+    }
+  }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    if (email === 'admin@masari.com' && password === 'admin123') {
-      localStorage.setItem('userRole', 'ADMIN');
-      router.push('/admin');
-    } else if (email === 'counselor@masari.com' && password === 'counselor123') {
-      localStorage.setItem('userRole', 'COUNSELOR');
-      router.push('/counselor/dashboard');
-    } else if (email === 'student@masari.com' && password === 'student123') {
-      localStorage.setItem('userRole', 'STUDENT');
-      router.push('/dashboard');
+    const account = REGISTERED_ACCOUNTS[email.trim().toLowerCase()];
+    if (account && account.password === password) {
+      setCurrentSession(account.user);
+      router.push(account.redirectPath);
     } else {
-      setError('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+      setError('البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى التأكد من بيانات حسابك.');
     }
   };
 
   return (
-    <div className="min-h-screen bg-transparent font-arabic flex flex-col">
+    <div className="min-h-screen bg-[#f7f5fd] font-arabic flex flex-col" dir="rtl">
       {/* Header */}
       <header className="p-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <img src="/logo.jpg" alt="مساري" className="h-12 w-auto mix-blend-multiply" />
+          <img src="/logo.jpg" alt="مساري" className="h-11 w-auto mix-blend-multiply" />
+          <span className="text-xl font-black text-[#2e1d68]">Masari</span>
         </Link>
-        <Link href="/" className="text-sm font-bold text-primary-700 hover:text-primary-600 transition-colors flex items-center gap-1">
+        <Link href="/" className="text-sm font-bold text-purple-800 hover:text-purple-600 transition-colors flex items-center gap-1">
           <ArrowRight size={16} />
           العودة للرئيسية
         </Link>
@@ -47,120 +54,108 @@ export default function LoginPage() {
 
       <main className="flex-1 flex items-center justify-center p-4">
         <div className="max-w-md w-full">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-black text-primary-900 mb-4">
-              {isRegister ? 'إنشاء حساب جديد' : 'تسجيل الدخول'}
+          <div className="text-center mb-8">
+            <h1 className="text-3xl sm:text-4xl font-black text-[#2e1d68] mb-2">
+              {isRegister ? 'إنشاء حساب مستخدم جديد' : 'تسجيل الدخول إلى حسابك'}
             </h1>
-            <p className="text-slate-700 font-bold text-lg">
-              {isRegister ? 'انضم إلى منصة مساري لتخطيط مستقبلك' : 'مرحباً بك مجدداً في منصة مساري'}
+            <p className="text-gray-600 font-bold text-sm sm:text-base">
+              {isRegister
+                ? 'انضمي لمنصة مساري للاستفادة من المقاييس والتوجيه'
+                : 'أدخل بيانات بروفايلك للوصول إلى لوحة تحكمك الخاصة'}
             </p>
           </div>
 
+          {infoNotice && (
+            <div className="mb-6 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs sm:text-sm font-bold flex items-start gap-3 shadow-xs">
+              <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+              <span>{infoNotice}</span>
+            </div>
+          )}
+
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass-morphism p-8 rounded-3xl relative overflow-hidden"
+            className="bg-white p-7 sm:p-9 rounded-3xl border border-purple-100 shadow-xl relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            
-            <form onSubmit={handleLogin} className="space-y-5 relative z-10">
+            <form onSubmit={handleLogin} className="space-y-4 relative z-10">
               {isRegister && (
-                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
-                  <label className="block text-sm font-bold text-primary-800 mb-2 flex items-center gap-2">
-                    <User size={16} className="text-primary-600" />
-                    الأسم الكامل
+                <div>
+                  <label className="block text-xs font-black text-[#2e1d68] mb-1.5 flex items-center gap-2">
+                    <User size={15} className="text-purple-600" />
+                    الاسم الكامل
                   </label>
                   <input 
                     type="text" 
                     placeholder="أدخل اسمك"
-                    className="w-full px-5 py-3.5 rounded-2xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-600/5 transition-all font-bold text-primary-900 placeholder:text-slate-500"
+                    className="w-full px-4 py-3 rounded-2xl bg-gray-50 border border-gray-200 outline-none focus:border-purple-600 focus:bg-white transition-all text-xs sm:text-sm font-bold text-[#2e1d68]"
                   />
-                </motion.div>
+                </div>
               )}
               
               <div>
-                <label className="block text-sm font-bold text-primary-800 mb-2 flex items-center gap-2">
-                  <Mail size={16} className="text-primary-600" />
-                  البريد الإلكتروني
+                <label className="block text-xs font-black text-[#2e1d68] mb-1.5 flex items-center gap-2">
+                  <Mail size={15} className="text-purple-600" />
+                  البريد الإلكتروني للحساب
                 </label>
                 <input 
                   type="email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="example@domain.com"
-                  className="w-full px-5 py-3.5 rounded-2xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-600/5 transition-all font-bold text-primary-900 placeholder:text-slate-500"
+                  placeholder="name@masari.com"
+                  required
+                  className="w-full px-4 py-3 rounded-2xl bg-gray-50 border border-gray-200 outline-none focus:border-purple-600 focus:bg-white transition-all text-xs sm:text-sm font-bold text-[#2e1d68] placeholder:text-gray-400"
                 />
               </div>
               
               <div>
-                <div className="flex items-center justify-between mb-2">
-                   <label className="text-sm font-bold text-primary-800 flex items-center gap-2">
-                     <Lock size={16} className="text-primary-600" />
+                <div className="flex items-center justify-between mb-1.5">
+                   <label className="text-xs font-black text-[#2e1d68] flex items-center gap-2">
+                     <Lock size={15} className="text-purple-600" />
                      كلمة المرور
                    </label>
-                   <Link href="#" className="text-xs font-bold text-primary-600 hover:underline">نسيت كلمة المرور؟</Link>
+                   <span className="text-[11px] font-bold text-purple-600 cursor-pointer hover:underline">
+                     نسيت كلمة المرور؟
+                   </span>
                 </div>
                 <input 
                   type="password" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-5 py-3.5 rounded-2xl glass-morphism border border-indigo-100/20 outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-600/5 transition-all font-bold text-primary-900 placeholder:text-slate-500"
+                  required
+                  className="w-full px-4 py-3 rounded-2xl bg-gray-50 border border-gray-200 outline-none focus:border-purple-600 focus:bg-white transition-all text-xs sm:text-sm font-bold text-[#2e1d68]"
                 />
               </div>
 
-              <div className="flex items-center gap-2 py-2">
-                <input type="checkbox" id="remember" className="w-4 h-4 rounded border-slate-300 text-primary-600 focus:ring-primary-600" />
-                <label htmlFor="remember" className="text-sm text-primary-800 font-medium cursor-pointer">تذكرني على هذا الجهاز</label>
-              </div>
-
               {error && (
-                <div className="bg-red-50 text-red-600 p-3 rounded-xl text-sm font-medium text-center">
+                <div className="bg-red-50 text-red-600 p-3 rounded-xl text-xs font-bold text-center border border-red-200">
                   {error}
                 </div>
               )}
 
               <button 
                 type="submit"
-                className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl font-bold bg-primary-600 text-white shadow-xl shadow-primary-600/20 hover:bg-primary-700 hover:scale-[1.02] active:scale-95 transition-all mt-4"
+                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-black bg-[#38266f] hover:bg-[#2c1d58] text-white shadow-md hover:shadow-lg transition-all text-sm mt-3 active:scale-95 cursor-pointer"
               >
-                دخول المنصة
-                <LogIn size={20} />
+                <span>الدخول إلى البروفايل</span>
+                <LogIn size={18} />
               </button>
-              
-              <div className="relative py-4">
-                <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200"></div></div>
-                <div className="relative flex justify-center text-xs uppercase"><span className="bg-white/90 px-4 text-primary-700 font-black">أو</span></div>
-              </div>
-
-              <p className="text-center text-sm text-slate-700 font-bold">
-                {isRegister ? 'لديك حساب بالفعل؟' : 'ليس لديك حساب؟'}{' '}
-                <button 
-                  onClick={() => setIsRegister(!isRegister)}
-                  className="text-primary-600 font-black cursor-pointer hover:underline"
-                >
-                  {isRegister ? 'تسجيل الدخول الآن' : 'أنشئ حساباً جديداً الآن'}
-                </button>
-              </p>
-
-              {!isRegister && (
-                <div className="pt-4 text-center border-t border-slate-200">
-                  <Link href="/admin" className="text-xs font-bold text-primary-700 hover:text-primary-600 transition-colors">
-                    دخول المستشارين والمديرين
-                  </Link>
-                </div>
-              )}
             </form>
+
+            <div className="mt-5 text-center">
+              <button 
+                onClick={() => { setIsRegister(!isRegister); setError(''); }}
+                className="text-xs text-purple-700 font-black hover:underline cursor-pointer"
+              >
+                {isRegister ? 'لديك حساب بالفعل؟ تسجيل الدخول' : 'طلب إنشاء حساب مستخدم جديد'}
+              </button>
+            </div>
           </motion.div>
-          
-          <p className="text-center mt-8 text-xs text-slate-600 font-medium">
-            بالتسجيل في المنصة، أنت توافق على <span className="underline cursor-pointer font-bold">شروط الاستخدام</span> و <span className="underline cursor-pointer font-bold">سياسة الخصوصية</span>.
-          </p>
         </div>
       </main>
 
-      <footer className="p-8 text-center text-slate-500 text-[10px] sm:text-xs font-bold">
-        © {new Date().getFullYear()} مساري - جميع الحقوق محفوظة.
+      <footer className="p-6 text-center text-gray-500 text-xs font-bold">
+        © 2026 مساري Masari.dz - منصة علمية رقمية لخدمة البحث والإرشاد. جميع الحقوق محفوظة.
       </footer>
     </div>
   );

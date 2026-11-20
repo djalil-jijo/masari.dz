@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 
-const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-ibm-plex-sans-arabic",
-});
-
 export const metadata: Metadata = {
-  title: "نظام الإرشاد المهني والنفسي",
-  description: "منصة متطورة لتحليل القدرات العقلية والميول المهنية للتلاميذ",
+  title: "منصة مساري | مقاييس . دعم . توجيه أفضل",
+  description: "منصة متطورة لتحليل القدرات العقلية والميول المهنية والمقاييس النفسية",
 };
 
 export default function RootLayout({
@@ -18,9 +11,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Triggering Next.js HMR
   return (
-    <html lang="ar" dir="rtl" className={`${ibmPlexSansArabic.variable} h-full antialiased`}>
+    <html lang="ar" dir="rtl" className="h-full antialiased">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="font-arabic min-h-full flex flex-col">{children}</body>
     </html>
   );
